@@ -66,8 +66,10 @@ public function toCrispWhatsApp(?CanReceiveWhatsAppNotification $notifiable = nu
             // you may want to cache it if you can to hit Crisp API lesser!
             LaravelCrispWhatsApp::make()->getMessageTemplateBodyContent('template-name'),
             [
-                'type' => ParameterTextEnum::Text,
-                'text' => 'Stranger',
+                [
+                    'type' => ParameterTextEnum::Text,
+                    'text' => 'Stranger',
+                ],
             ]
         )
         ->addTemplateButtonComponent('CTA', 'URL')
