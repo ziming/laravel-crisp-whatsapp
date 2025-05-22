@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Ziming\LaravelCrispWhatsApp;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Notification;
 use Ziming\LaravelCrispWhatsApp\Interfaces\CanReceiveWhatsAppNotification;
@@ -26,7 +25,7 @@ class CrispWhatsAppChannel
         /** @phpstan-ignore-next-line */
         $toPhone = $crispWhatsAppMessage->toNumber ?: $notifiable->routeNotificationForWhatsApp($notification);
 
-        // By default it is note, just making it explicit so that if Crisp changes the default in the future 
+        // By default it is note, just making it explicit so that if Crisp changes the default in the future
         // I will not get surprised
         $crispOptions = $crispWhatsAppMessage->crispOptions ?: [
             'type' => 'note',

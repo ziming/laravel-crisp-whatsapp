@@ -8,10 +8,9 @@ use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Http;
 
-class LaravelCrispWhatsApp 
+class LaravelCrispWhatsApp
 {
     private string $websiteId;
 
@@ -118,7 +117,7 @@ class LaravelCrispWhatsApp
             $this->identifier,
             $this->key
         )
-            ->post(config('crisp-whatsapp.base_url') . "/{$this->websiteId}/template/send",
+            ->post(config('crisp-whatsapp.base_url')."/{$this->websiteId}/template/send",
                 [
                     'from_number' => $fromPhone ?: $this->fromPhone,
                     'to_number' => $toPhone,
