@@ -1,24 +1,25 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "ziming/laravel-crisp-whatsapp",
+    "description": "This is my package laravel-crisp-whatsapp",
     "keywords": [
-        ":vendor_name",
+        "ziming",
         "laravel",
-        ":package_slug"
+        "laravel-crisp-whatsapp"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/ziming/laravel-crisp-whatsapp",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
-            "role": "Developer"
+            "name": "ziming",
+            "email": "ziming.opensource@gmail.com",
+            "role": "Package Uploader"
         }
     ],
     "require": {
         "php": "^8.4",
-        "spatie/laravel-package-tools": "^1.16",
-        "illuminate/contracts": "^10.0||^11.0||^12.0"
+        "illuminate/contracts": "^10.0||^11.0||^12.0",
+        "spatie/laravel-data": "^4.15",
+        "spatie/laravel-package-tools": "^1.16"
     },
     "require-dev": {
         "laravel/pint": "^1.14",
@@ -35,13 +36,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Ziming\\LaravelCrispWhatsApp\\": "src/",
+            "Ziming\\LaravelCrispWhatsApp\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "Ziming\\LaravelCrispWhatsApp\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -63,10 +64,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Ziming\\LaravelCrispWhatsApp\\LaravelCrispWhatsAppServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "LaravelCrispWhatsApp": "Ziming\\LaravelCrispWhatsApp\\Facades\\LaravelCrispWhatsApp"
             }
         }
     },
