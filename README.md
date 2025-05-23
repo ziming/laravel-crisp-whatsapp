@@ -91,9 +91,7 @@ public function via(Model $notifiable): array
 
 ## Testing
 
-```bash
-composer test
-```
+Sending whatsapp messages costs money. Hence there are no tests.
 
 ## Changelog
 
