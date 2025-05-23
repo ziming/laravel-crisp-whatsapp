@@ -12,8 +12,8 @@ class CrispWhatsAppMessage
     public function __construct(
         public array $messageTemplate = [],
         public array $crispOptions = [],
-        public ?string $fromNumber = null,
         public ?string $toNumber = null,
+        public ?string $fromNumber = null,
     ) {
         $this->fromNumber = $fromNumber ?? config('crisp-whatsapp.from_phone');
     }

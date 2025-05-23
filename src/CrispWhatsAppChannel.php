@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ziming\LaravelCrispWhatsApp;
 
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Notifications\Notification;
 use Ziming\LaravelCrispWhatsApp\Interfaces\CanReceiveWhatsAppNotification;
@@ -17,6 +18,9 @@ class CrispWhatsAppChannel
         $this->crispWhatsApp = $crispWhatsApp;
     }
 
+    /**
+     * @throws ConnectionException
+     */
     public function send(AnonymousNotifiable|CanReceiveWhatsAppNotification $notifiable, Notification $notification): void
     {
         /** @phpstan-ignore-next-line  $crispWhatsAppMessage */

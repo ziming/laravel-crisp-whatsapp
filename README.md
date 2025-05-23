@@ -55,6 +55,9 @@ declare(strict_types=1);
 
 use Ziming\LaravelCrispWhatsApp\Enums\ParameterTypeEnum;
 use Ziming\LaravelCrispWhatsApp\CrispWhatsAppChannel;
+use CrispIM\CrispApi\Enums\ParameterTextEnum;
+use Ziming\LaravelCrispWhatsApp\CrispWhatsAppMessage;
+use Ziming\LaravelCrispWhatsApp\CanReceiveWhatsAppNotification;
 
 public function toCrispWhatsApp(?CanReceiveWhatsAppNotification $notifiable = null): CrispWhatsAppMessage
 {
@@ -62,6 +65,7 @@ public function toCrispWhatsApp(?CanReceiveWhatsAppNotification $notifiable = nu
         ->templateLanguage('en')
         ->toNumber($notifiable->mobile_phone)
         ->templateName('template-name')
+        ->addTemplateHeaderTextComponent('The header of your whatsapp template')
         ->addTemplateBodyComponent(
             // you may want to cache it if you can to hit Crisp API lesser!
             LaravelCrispWhatsApp::make()->getMessageTemplateBodyContent('template-name'),
@@ -72,6 +76,7 @@ public function toCrispWhatsApp(?CanReceiveWhatsAppNotification $notifiable = nu
                 ],
             ]
         )
+        ->addTemplateFooter('This is the footer of your whatsapp template')
         ->addTemplateButtonComponent('CTA', 'URL')
         ->addTemplateButtonComponent('Not interested anymore');
 }
