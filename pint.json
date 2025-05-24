@@ -1,0 +1,21 @@
+{
+    "preset": "laravel",
+    "rules": {
+        "align_multiline_comment": true,
+        "array_syntax": true,
+        "array_push": true,
+        "array_indentation": true,
+        "blank_line_after_namespace": true,
+        "blank_line_after_opening_tag": true,
+        "combine_consecutive_issets": true,
+        "combine_consecutive_unsets": true,
+        "declare_parentheses": true,
+        "concat_space": true,
+        "explicit_string_variable": true,
+        "fully_qualified_strict_types" : true,
+        "void_return": true,
+        "declare_strict_types": true,
+        "simplified_if_return": true,
+        "simplified_null_return": true
+    }
+}
