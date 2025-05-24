@@ -55,22 +55,22 @@ declare(strict_types=1);
 
 use Ziming\LaravelCrispWhatsApp\Enums\ParameterTypeEnum;
 use Ziming\LaravelCrispWhatsApp\CrispWhatsAppChannel;
-use CrispIM\CrispApi\Enums\ParameterTextEnum;
+use Ziming\LaravelCrispWhatsApp\Enums\ParameterTypeEnum;
 use Ziming\LaravelCrispWhatsApp\CrispWhatsAppMessage;
-use Ziming\LaravelCrispWhatsApp\CanReceiveWhatsAppNotification;
+use Ziming\LaravelCrispWhatsApp\CanReceiveCrispWhatsAppNotification;
 
 class OrderShippedNotification extends Notification
 {
     use Queueable;
 
-    public function via(CanReceiveWhatsAppNotification $notifiable): array
+    public function via(CanReceiveCrispWhatsAppNotification $notifiable): array
     {
         return [
             CrispWhatsAppChannel::class;
         ];
     }
 
-    public function toCrispWhatsApp(CanReceiveWhatsAppNotification $notifiable): CrispWhatsAppMessage
+    public function toCrispWhatsApp(CanReceiveCrispWhatsAppNotification $notifiable): CrispWhatsAppMessage
     {
         // See the source code for more methods on CrispWhatsAppMessage!
         return CrispWhatsAppMessage::make()
@@ -102,8 +102,9 @@ Below is an example:
 ```php
 use Illuminate\Database\Eloquent\Model;
 use \Illuminate\Notifications\Notifiable;
+use Ziming\LaravelCrispWhatsApp\Interfaces\CanReceiveCrispWhatsAppNotification;
 
-class User extends Model implements CanReceiveWhatsAppNotification
+class User extends Model implements CanReceiveCrispWhatsAppNotification
 {
     public function routeNotificationForCrispWhatsApp(): string
     {
@@ -114,7 +115,7 @@ class User extends Model implements CanReceiveWhatsAppNotification
 
 ## Testing
 
-Sending whatsapp messages costs money. Hence there are no tests.
+Sending whatsapp messages costs money. Hence there are no tests. So if there are issues, just create an issue to let me know or make a PR fix for it :)
 
 ## Changelog
 
