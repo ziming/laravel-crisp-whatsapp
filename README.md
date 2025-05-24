@@ -48,7 +48,7 @@ return [
 
 ## Quick Usage (More documentation in the future!)
 
-In any of your laravel notification class that you plan to use whatsapp, add these methods
+Here is an example on how you can use it in a laravel notification class.
 
 ```php
 declare(strict_types=1);
@@ -59,33 +59,56 @@ use CrispIM\CrispApi\Enums\ParameterTextEnum;
 use Ziming\LaravelCrispWhatsApp\CrispWhatsAppMessage;
 use Ziming\LaravelCrispWhatsApp\CanReceiveWhatsAppNotification;
 
-public function toCrispWhatsApp(?CanReceiveWhatsAppNotification $notifiable = null): CrispWhatsAppMessage
+class OrderShippedNotification extends Notification
 {
-    return CrispWhatsAppMessage::make()
-        ->templateLanguage('en')
-        ->toNumber($notifiable->mobile_phone)
-        ->templateName('template-name')
-        ->addTemplateHeaderTextComponent('The header of your whatsapp template')
-        ->addTemplateBodyComponent(
-            // you may want to cache it if you can to hit Crisp API lesser!
-            LaravelCrispWhatsApp::make()->getMessageTemplateBodyContent('template-name'),
-            [
-                [
-                    'type' => ParameterTextEnum::Text,
-                    'text' => 'Stranger',
-                ],
-            ]
-        )
-        ->addTemplateFooter('This is the footer of your whatsapp template')
-        ->addTemplateButtonComponent('CTA', 'URL')
-        ->addTemplateButtonComponent('Not interested anymore');
-}
+    use Queueable;
 
-public function via(Model $notifiable): array
+    public function via(CanReceiveWhatsAppNotification $notifiable): array
+    {
+        return [
+            CrispWhatsAppChannel::class;
+        ];
+    }
+
+    public function toCrispWhatsApp(CanReceiveWhatsAppNotification $notifiable): CrispWhatsAppMessage
+    {
+        // See the source code for more methods on CrispWhatsAppMessage!
+        return CrispWhatsAppMessage::make()
+            ->templateLanguage('en')
+            ->toNumber($notifiable->mobile_phone)
+            ->templateName('template-name')
+            ->addTemplateHeaderTextComponent('The header of your whatsapp template')
+            ->addTemplateBodyComponent(
+                // you may want to cache it if you can to hit Crisp API lesser!
+                LaravelCrispWhatsApp::make()->getMessageTemplateBodyContent('template-name'),
+                [
+                    [
+                        'type' => ParameterTextEnum::Text,
+                        'text' => 'Stranger',
+                    ],
+                ]
+            )
+            ->addTemplateFooter('This is the footer of your whatsapp template')
+            ->addTemplateButtonComponent('CTA', 'URL')
+            ->addTemplateButtonComponent('Not interested anymore');
+    }
+}
+```
+
+Then in your model classes that can receive WhatsApp notifications, you can use the `CanReceiveWhatsAppNotification` trait:
+
+Below is an example:
+
+```php
+use Illuminate\Database\Eloquent\Model;
+use \Illuminate\Notifications\Notifiable;
+
+class User extends Model implements CanReceiveWhatsAppNotification
 {
-    return [
-        CrispWhatsAppChannel::class;
-    ];
+    public function routeNotificationForCrispWhatsApp(): string
+    {
+        return $this->mobile_phone;
+    }
 }
 ```
 
