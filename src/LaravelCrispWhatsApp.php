@@ -86,6 +86,9 @@ class LaravelCrispWhatsApp
         return $messageTemplate;
     }
 
+    /**
+     * @throws ConnectionException
+     */
     public function getMessageTemplateHeaderComponent(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?WhatsAppTemplateHeaderComponent
     {
         $messageTemplate = $this->getMessageTemplate($name, $searchLimit, $onlyApproved, $excludeSamples, $after);
@@ -166,9 +169,39 @@ class LaravelCrispWhatsApp
     /**
      * @throws ConnectionException
      */
-    public function getMessageTemplateBodyContent(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?string
+    public function getMessageTemplateHeaderText(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?string
+    {
+        return $this->getMessageTemplateHeaderComponent(
+            $name,
+            $searchLimit,
+            $onlyApproved,
+            $excludeSamples,
+            $after
+        )
+            ?->text;
+    }
+
+    /**
+     * @throws ConnectionException
+     */
+    public function getMessageTemplateBodyText(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?string
     {
         return $this->getMessageTemplateBodyComponent(
+            $name,
+            $searchLimit,
+            $onlyApproved,
+            $excludeSamples,
+            $after
+        )
+            ?->text;
+    }
+
+    /**
+     * @throws ConnectionException
+     */
+    public function getMessageTemplateFooterText(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?string
+    {
+        return $this->getMessageTemplateFooterComponent(
             $name,
             $searchLimit,
             $onlyApproved,

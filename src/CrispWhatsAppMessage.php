@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace Ziming\LaravelCrispWhatsApp;
 
 use Ziming\LaravelCrispWhatsApp\Enums\ButtonSubTypeEnum;
+use Ziming\LaravelCrispWhatsApp\Enums\ComponentTypeEnum;
 use Ziming\LaravelCrispWhatsApp\Enums\CrispOptionTypeEnum;
+use Ziming\LaravelCrispWhatsApp\Enums\HeaderComponentFormatEnum;
 
 class CrispWhatsAppMessage
 {
@@ -54,8 +56,8 @@ class CrispWhatsAppMessage
     public function addTemplateHeaderTextComponent(string $headerText): static
     {
         $this->messageTemplate['components'][] = [
-            'type' => 'header',
-            'format' => 'text',
+            'type' => ComponentTypeEnum::Header->value,
+            'format' => HeaderComponentFormatEnum::Text->value,
             'text' => $headerText,
         ];
 
@@ -65,8 +67,8 @@ class CrispWhatsAppMessage
     public function addTemplateHeaderImageComponent(string $fileName, string $link): static
     {
         $this->messageTemplate['components'][] = [
-            'type' => 'header',
-            'format' => 'image',
+            'type' => ComponentTypeEnum::Header->value,
+            'format' => HeaderComponentFormatEnum::Image->value,
             'parameters' => [
                 [
                     'type' => 'image',
@@ -84,8 +86,8 @@ class CrispWhatsAppMessage
     public function addTemplateHeaderVideoComponent(string $link): static
     {
         $this->messageTemplate['components'][] = [
-            'type' => 'header',
-            'format' => 'video',
+            'type' => ComponentTypeEnum::Header->value,
+            'format' => HeaderComponentFormatEnum::Video->value,
             'parameters' => [
                 [
                     'type' => 'video',
@@ -102,8 +104,8 @@ class CrispWhatsAppMessage
     public function addTemplateHeaderDocumentComponent(string $fileName, string $link): static
     {
         $this->messageTemplate['components'][] = [
-            'type' => 'header',
-            'format' => 'document',
+            'type' => ComponentTypeEnum::Header->value,
+            'format' => HeaderComponentFormatEnum::Document->value,
             'parameters' => [
                 [
                     'type' => 'document',
@@ -121,8 +123,8 @@ class CrispWhatsAppMessage
     public function addTemplateHeaderLocationComponent(string $name, string $address, float $latitude, float $longitude): static
     {
         $this->messageTemplate['components'][] = [
-            'type' => 'header',
-            'format' => 'location',
+            'type' => ComponentTypeEnum::Header->value,
+            'format' => HeaderComponentFormatEnum::Location->value,
             'parameters' => [
                 [
                     'type' => 'location',
@@ -142,7 +144,7 @@ class CrispWhatsAppMessage
     public function addTemplateBodyComponent(string $bodyText, array $parameters = []): static
     {
         $this->messageTemplate['components'][] = [
-            'type' => 'body',
+            'type' => ComponentTypeEnum::Body->value,
             'text' => $bodyText,
             'parameters' => $parameters,
         ];
@@ -166,7 +168,7 @@ class CrispWhatsAppMessage
     public function addTemplateFooter(string $footerText): static
     {
         $this->messageTemplate['components'][] = [
-            'type' => 'FOOTER',
+            'type' => ComponentTypeEnum::Footer->value,
             'text' => $footerText,
         ];
 

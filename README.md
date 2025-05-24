@@ -80,7 +80,7 @@ class OrderShippedNotification extends Notification
             ->addTemplateHeaderTextComponent('The header of your whatsapp template')
             ->addTemplateBodyComponent(
                 // you may want to cache it if you can to hit Crisp API lesser!
-                LaravelCrispWhatsApp::make()->getMessageTemplateBodyContent('template-name'),
+                LaravelCrispWhatsApp::make()->getMessageTemplateBodyText('template-name'),
                 [
                     [
                         'type' => ParameterTextEnum::Text,
