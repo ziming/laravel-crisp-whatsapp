@@ -6,8 +6,8 @@ namespace Ziming\LaravelCrispWhatsApp\Enums;
 
 enum ComponentTypeEnum: string
 {
-    case Header = 'header';
-    case Body = 'body';
-    case Footer = 'footer';
-    case Button = 'button';
+    case Header = 'HEADER';
+    case Body = 'BODY';
+    case Footer = 'FOOTER';
+    case Buttons = 'BUTTONS';
 }

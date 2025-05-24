@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Ziming\LaravelCrispWhatsApp\Enums;
 
-enum HeaderComponentEnum: string
+enum HeaderComponentFormatEnum: string
 {
     case Text = 'text';
     case Image = 'image';

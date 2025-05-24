@@ -9,6 +9,10 @@ use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
+use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateBodyComponent;
+use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateFooterComponent;
+use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateHeaderComponent;
+use Ziming\LaravelCrispWhatsApp\Enums\ComponentTypeEnum;
 
 class LaravelCrispWhatsApp
 {
@@ -82,10 +86,7 @@ class LaravelCrispWhatsApp
         return $messageTemplate;
     }
 
-    /**
-     * @throws ConnectionException
-     */
-    public function getMessageTemplateBodyContent(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?string
+    public function getMessageTemplateHeaderComponent(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?WhatsAppTemplateHeaderComponent
     {
         $messageTemplate = $this->getMessageTemplate($name, $searchLimit, $onlyApproved, $excludeSamples, $after);
 
@@ -94,12 +95,87 @@ class LaravelCrispWhatsApp
         }
 
         foreach ($messageTemplate['components'] as $component) {
-            if ($component['type'] === 'BODY') {
-                return $component['text'];
+            if ($component['type'] === ComponentTypeEnum::Header->value) {
+                return WhatsAppTemplateHeaderComponent::from($component);
             }
         }
 
         return null;
+    }
+
+    /**
+     * @throws ConnectionException
+     */
+    public function getMessageTemplateBodyComponent(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?WhatsAppTemplateBodyComponent
+    {
+        $messageTemplate = $this->getMessageTemplate($name, $searchLimit, $onlyApproved, $excludeSamples, $after);
+
+        if ($messageTemplate === null) {
+            return null;
+        }
+
+        foreach ($messageTemplate['components'] as $component) {
+            if ($component['type'] === ComponentTypeEnum::Body->value) {
+                return WhatsAppTemplateBodyComponent::from($component);
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @throws ConnectionException
+     */
+    public function getMessageTemplateButtonsComponent(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?WhatsAppTemplateFooterComponent
+    {
+        $messageTemplate = $this->getMessageTemplate($name, $searchLimit, $onlyApproved, $excludeSamples, $after);
+
+        if ($messageTemplate === null) {
+            return null;
+        }
+
+        foreach ($messageTemplate['components'] as $component) {
+            if ($component['type'] === ComponentTypeEnum::Buttons->value) {
+                return WhatsAppTemplateFooterComponent::from($component);
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @throws ConnectionException
+     */
+    public function getMessageTemplateFooterComponent(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?WhatsAppTemplateFooterComponent
+    {
+        $messageTemplate = $this->getMessageTemplate($name, $searchLimit, $onlyApproved, $excludeSamples, $after);
+
+        if ($messageTemplate === null) {
+            return null;
+        }
+
+        foreach ($messageTemplate['components'] as $component) {
+            if ($component['type'] === ComponentTypeEnum::Footer->value) {
+                return WhatsAppTemplateFooterComponent::from($component);
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @throws ConnectionException
+     */
+    public function getMessageTemplateBodyContent(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?string
+    {
+        return $this->getMessageTemplateBodyComponent(
+            $name,
+            $searchLimit,
+            $onlyApproved,
+            $excludeSamples,
+            $after
+        )
+            ?->text;
     }
 
     /**
