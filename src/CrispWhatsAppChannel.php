@@ -6,7 +6,6 @@ namespace Ziming\LaravelCrispWhatsApp;
 
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Notifications\AnonymousNotifiable;
-use Illuminate\Notifications\Notification;
 use Ziming\LaravelCrispWhatsApp\Interfaces\CanReceiveCrispWhatsAppNotification;
 use Ziming\LaravelCrispWhatsApp\Interfaces\CrispWhatsAppNotification;
 

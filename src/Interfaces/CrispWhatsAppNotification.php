@@ -9,5 +9,4 @@ use Ziming\LaravelCrispWhatsApp\CrispWhatsAppMessage;
 interface CrispWhatsAppNotification
 {
     public function toCrispWhatsApp(CanReceiveCrispWhatsAppNotification $notifiable): CrispWhatsAppMessage;
-
 }
