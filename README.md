@@ -57,9 +57,10 @@ use Ziming\LaravelCrispWhatsApp\Enums\ParameterTypeEnum;
 use Ziming\LaravelCrispWhatsApp\CrispWhatsAppChannel;
 use Ziming\LaravelCrispWhatsApp\Enums\ParameterTypeEnum;
 use Ziming\LaravelCrispWhatsApp\CrispWhatsAppMessage;
+use Ziming\LaravelCrispWhatsApp\Interfaces\CrispWhatsAppNotification;
 use Ziming\LaravelCrispWhatsApp\CanReceiveCrispWhatsAppNotification;
 
-class OrderShippedNotification extends Notification
+class OrderShippedNotification extends Notification implements CrispWhatsAppNotification
 {
     use Queueable;
 
