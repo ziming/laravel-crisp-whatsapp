@@ -20,7 +20,7 @@ class LaravelCrispWhatsApp
 
     private string $identifier;
 
-    private string $key;
+    private string $accessKey;
 
     private string $fromPhone;
 
@@ -28,7 +28,7 @@ class LaravelCrispWhatsApp
     {
         $this->websiteId = config('crisp-whatsapp.website_id');
         $this->identifier = config('crisp-whatsapp.identifier');
-        $this->key = config('crisp-whatsapp.key');
+        $this->accessKey = config('crisp-whatsapp.access_key');
         $this->fromPhone = config('crisp-whatsapp.from_phone');
     }
 
@@ -49,7 +49,7 @@ class LaravelCrispWhatsApp
     ): array {
         $response = Http::withBasicAuth(
             $this->identifier,
-            $this->key
+            $this->accessKey
         )
             ->get(
                 config('crisp-whatsapp.base_url').
@@ -222,9 +222,9 @@ class LaravelCrispWhatsApp
     ): PromiseInterface|Response {
 
         $toPhone = config('crisp-whatsapp.test_mode') ? config('crisp-whatsapp.to_test_phone') : $toPhone;
-        $response = Http::withBasicAuth(
+        return Http::withBasicAuth(
             $this->identifier,
-            $this->key
+            $this->accessKey
         )
             ->post(config('crisp-whatsapp.base_url')."/{$this->websiteId}/template/send",
                 [
@@ -233,7 +233,5 @@ class LaravelCrispWhatsApp
                     'crisp_options' => $crispOptions,
                     'message_template' => $messageTemplate,
                 ]);
-
-        return $response;
     }
 }
