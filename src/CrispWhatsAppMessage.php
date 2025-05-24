@@ -9,7 +9,7 @@ use Ziming\LaravelCrispWhatsApp\Enums\ComponentTypeEnum;
 use Ziming\LaravelCrispWhatsApp\Enums\CrispOptionTypeEnum;
 use Ziming\LaravelCrispWhatsApp\Enums\HeaderComponentFormatEnum;
 
-class CrispWhatsAppMessage
+final class CrispWhatsAppMessage
 {
     public function __construct(
         public array $messageTemplate = [],

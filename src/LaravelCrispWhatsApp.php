@@ -14,7 +14,7 @@ use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateFooterComponent;
 use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateHeaderComponent;
 use Ziming\LaravelCrispWhatsApp\Enums\ComponentTypeEnum;
 
-class LaravelCrispWhatsApp
+readonly class LaravelCrispWhatsApp
 {
     private string $websiteId;
 

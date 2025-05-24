@@ -9,7 +9,7 @@ use Illuminate\Notifications\AnonymousNotifiable;
 use Ziming\LaravelCrispWhatsApp\Interfaces\CanReceiveCrispWhatsAppNotification;
 use Ziming\LaravelCrispWhatsApp\Interfaces\CrispWhatsAppNotification;
 
-class CrispWhatsAppChannel
+final readonly class CrispWhatsAppChannel
 {
     public function __construct(private LaravelCrispWhatsApp $crispWhatsApp) {}
 

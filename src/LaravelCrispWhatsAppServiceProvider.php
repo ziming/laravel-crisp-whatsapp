@@ -7,7 +7,7 @@ namespace Ziming\LaravelCrispWhatsApp;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class LaravelCrispWhatsAppServiceProvider extends PackageServiceProvider
+final class LaravelCrispWhatsAppServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {

@@ -7,7 +7,7 @@ namespace Ziming\LaravelCrispWhatsApp\Data;
 use Spatie\LaravelData\Data;
 use Ziming\LaravelCrispWhatsApp\Enums\ComponentTypeEnum;
 
-class WhatsAppTemplateBodyComponent extends Data
+final class WhatsAppTemplateBodyComponent extends Data
 {
     public function __construct(
         public ComponentTypeEnum|string $type,

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Facade;
 /**
  * @see \Ziming\LaravelCrispWhatsApp\LaravelCrispWhatsApp
  */
-class LaravelCrispWhatsApp extends Facade
+final class LaravelCrispWhatsApp extends Facade
 {
     protected static function getFacadeAccessor(): string
     {

@@ -8,7 +8,7 @@ use Spatie\LaravelData\Data;
 use Ziming\LaravelCrispWhatsApp\Enums\CategoryEnum;
 use Ziming\LaravelCrispWhatsApp\Enums\StatusEnum;
 
-class CrispWhatsAppTemplate extends Data
+final class CrispWhatsAppTemplate extends Data
 {
     public function __construct(
         public CategoryEnum|string $category,

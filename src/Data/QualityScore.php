@@ -6,7 +6,7 @@ namespace Ziming\LaravelCrispWhatsApp\Data;
 
 use Spatie\LaravelData\Data;
 
-class QualityScore extends Data
+final class QualityScore extends Data
 {
     public function __construct(public string $score) {}
 }
