@@ -12,11 +12,11 @@ class CrispWhatsAppTemplate extends Data
 {
     public function __construct(
         public CategoryEnum|string $category,
-        public string              $id,
-        public string              $language,
-        public string              $name,
-        public StatusEnum|string   $status,
-        public array               $components,
-        public QualityScore        $quality_score,
+        public string $id,
+        public string $language,
+        public string $name,
+        public StatusEnum|string $status,
+        public array $components,
+        public QualityScore $quality_score,
     ) {}
 }
