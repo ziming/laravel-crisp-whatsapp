@@ -222,6 +222,7 @@ class LaravelCrispWhatsApp
     ): PromiseInterface|Response {
 
         $toPhone = config('crisp-whatsapp.test_mode') ? config('crisp-whatsapp.to_test_phone') : $toPhone;
+
         return Http::withBasicAuth(
             $this->identifier,
             $this->accessKey
