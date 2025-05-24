@@ -11,12 +11,8 @@ use Ziming\LaravelCrispWhatsApp\Interfaces\CrispWhatsAppNotification;
 
 class CrispWhatsAppChannel
 {
-    private LaravelCrispWhatsApp $crispWhatsApp;
-
-    public function __construct(LaravelCrispWhatsApp $crispWhatsApp)
-    {
-        $this->crispWhatsApp = $crispWhatsApp;
-    }
+    public function __construct(private LaravelCrispWhatsApp $crispWhatsApp)
+    {}
 
     /**
      * @throws ConnectionException

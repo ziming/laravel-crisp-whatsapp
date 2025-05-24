@@ -102,7 +102,6 @@ Below is an example:
 
 ```php
 use Illuminate\Database\Eloquent\Model;
-use \Illuminate\Notifications\Notifiable;
 use Ziming\LaravelCrispWhatsApp\Interfaces\CanReceiveCrispWhatsAppNotification;
 
 class User extends Model implements CanReceiveCrispWhatsAppNotification
