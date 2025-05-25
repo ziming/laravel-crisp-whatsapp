@@ -6,7 +6,6 @@ namespace Ziming\LaravelCrispWhatsApp\Builders;
 
 class ParameterBuilder
 {
-
     public static function headerImage(string $fileName, string $link): array
     {
         return [
@@ -52,7 +51,6 @@ class ParameterBuilder
         ];
     }
 
-
     public static function text(string $text): array
     {
         return [
@@ -71,5 +69,4 @@ class ParameterBuilder
             ],
         ];
     }
-
 }
