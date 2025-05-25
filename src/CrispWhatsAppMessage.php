@@ -25,50 +25,50 @@ final class CrispWhatsAppMessage
         return new self;
     }
 
-    public function messageTemplate(array $messageTemplate): static
+    public function messageTemplate(array $messageTemplate): self
     {
         $this->messageTemplate = $messageTemplate;
 
         return $this;
     }
 
-    public function templateLanguage(string $language): static
+    public function templateLanguage(string $language): self
     {
         $this->messageTemplate['language'] = $language;
 
         return $this;
     }
 
-    public function templateName(string $name): static
+    public function templateName(string $name): self
     {
         $this->messageTemplate['name'] = $name;
 
         return $this;
     }
 
-    public function templateComponents(array $components): static
+    public function templateComponents(array $components): self
     {
         $this->messageTemplate['components'] = $components;
 
         return $this;
     }
 
-    public function addTemplateHeaderTextComponent(string $headerText): static
+    public function addTemplateHeaderTextComponent(string $headerText): self
     {
         $this->messageTemplate['components'][] = [
-            'type' => ComponentTypeEnum::Header->value,
-            'format' => HeaderComponentFormatEnum::Text->value,
+            'type' => ComponentTypeEnum::Header,
+            'format' => HeaderComponentFormatEnum::Text,
             'text' => $headerText,
         ];
 
         return $this;
     }
 
-    public function addTemplateHeaderImageComponent(string $fileName, string $link): static
+    public function addTemplateHeaderImageComponent(string $fileName, string $link): self
     {
         $this->messageTemplate['components'][] = [
-            'type' => ComponentTypeEnum::Header->value,
-            'format' => HeaderComponentFormatEnum::Image->value,
+            'type' => ComponentTypeEnum::Header,
+            'format' => HeaderComponentFormatEnum::Image,
             'parameters' => [
                 [
                     'type' => 'image',
@@ -83,11 +83,11 @@ final class CrispWhatsAppMessage
         return $this;
     }
 
-    public function addTemplateHeaderVideoComponent(string $link): static
+    public function addTemplateHeaderVideoComponent(string $link): self
     {
         $this->messageTemplate['components'][] = [
-            'type' => ComponentTypeEnum::Header->value,
-            'format' => HeaderComponentFormatEnum::Video->value,
+            'type' => ComponentTypeEnum::Header,
+            'format' => HeaderComponentFormatEnum::Video,
             'parameters' => [
                 [
                     'type' => 'video',
@@ -101,11 +101,11 @@ final class CrispWhatsAppMessage
         return $this;
     }
 
-    public function addTemplateHeaderDocumentComponent(string $fileName, string $link): static
+    public function addTemplateHeaderDocumentComponent(string $fileName, string $link): self
     {
         $this->messageTemplate['components'][] = [
-            'type' => ComponentTypeEnum::Header->value,
-            'format' => HeaderComponentFormatEnum::Document->value,
+            'type' => ComponentTypeEnum::Header,
+            'format' => HeaderComponentFormatEnum::Document,
             'parameters' => [
                 [
                     'type' => 'document',
@@ -120,11 +120,11 @@ final class CrispWhatsAppMessage
         return $this;
     }
 
-    public function addTemplateHeaderLocationComponent(string $name, string $address, float $latitude, float $longitude): static
+    public function addTemplateHeaderLocationComponent(string $name, string $address, float $latitude, float $longitude): self
     {
         $this->messageTemplate['components'][] = [
-            'type' => ComponentTypeEnum::Header->value,
-            'format' => HeaderComponentFormatEnum::Location->value,
+            'type' => ComponentTypeEnum::Header,
+            'format' => HeaderComponentFormatEnum::Location,
             'parameters' => [
                 [
                     'type' => 'location',
@@ -141,7 +141,7 @@ final class CrispWhatsAppMessage
         return $this;
     }
 
-    public function addTemplateBodyComponent(string $bodyText, array $parameters = []): static
+    public function addTemplateBodyComponent(string $bodyText, array $parameters = []): self
     {
         $this->messageTemplate['components'][] = [
             'type' => ComponentTypeEnum::Body->value,
@@ -152,7 +152,7 @@ final class CrispWhatsAppMessage
         return $this;
     }
 
-    public function addTemplateButtonComponent(string $buttonText, string|ButtonSubTypeEnum $subType = ButtonSubTypeEnum::QuickReply, array $parameters = [], int $index = 0): static
+    public function addTemplateButtonComponent(string $buttonText, string|ButtonSubTypeEnum $subType = ButtonSubTypeEnum::QuickReply, array $parameters = [], int $index = 0): self
     {
         $this->messageTemplate['components'][] = [
             'type' => 'button',
@@ -165,7 +165,7 @@ final class CrispWhatsAppMessage
         return $this;
     }
 
-    public function addTemplateFooter(string $footerText): static
+    public function addTemplateFooter(string $footerText): self
     {
         $this->messageTemplate['components'][] = [
             'type' => ComponentTypeEnum::Footer->value,
@@ -175,7 +175,7 @@ final class CrispWhatsAppMessage
         return $this;
     }
 
-    public function crispOptions(CrispOptionTypeEnum $type = CrispOptionTypeEnum::Note, bool $newSession = false, bool $autoResolve = false): static
+    public function crispOptions(CrispOptionTypeEnum $type = CrispOptionTypeEnum::Note, bool $newSession = false, bool $autoResolve = false): self
     {
         $this->crispOptions = [
             'type' => $type,
@@ -186,21 +186,21 @@ final class CrispWhatsAppMessage
         return $this;
     }
 
-    public function setCrispOptions(array $crispOptions): static
+    public function setRawCrispOptions(array $crispOptions): self
     {
         $this->crispOptions = $crispOptions;
 
         return $this;
     }
 
-    public function fromNumber(string $fromNumber): static
+    public function fromNumber(string $fromNumber): self
     {
         $this->fromNumber = $fromNumber;
 
         return $this;
     }
 
-    public function toNumber(string $toNumber): static
+    public function toNumber(string $toNumber): self
     {
         $this->toNumber = $toNumber;
 
