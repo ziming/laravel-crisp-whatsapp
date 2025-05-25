@@ -144,7 +144,7 @@ final class CrispWhatsAppMessage
     public function addTemplateBodyComponent(string $bodyText, array $parameters = []): self
     {
         $this->messageTemplate['components'][] = [
-            'type' => ComponentTypeEnum::Body->value,
+            'type' => ComponentTypeEnum::Body,
             'text' => $bodyText,
             'parameters' => $parameters,
         ];
@@ -168,7 +168,7 @@ final class CrispWhatsAppMessage
     public function addTemplateFooter(string $footerText): self
     {
         $this->messageTemplate['components'][] = [
-            'type' => ComponentTypeEnum::Footer->value,
+            'type' => ComponentTypeEnum::Footer,
             'text' => $footerText,
         ];
 

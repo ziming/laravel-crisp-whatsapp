@@ -6,8 +6,8 @@ namespace Ziming\LaravelCrispWhatsApp\Enums;
 
 enum ButtonSubTypeEnum: string
 {
-    case Url = 'url';
-    case Flow = 'flow';
-    case Catalog = 'catalog';
-    case QuickReply = 'quick_reply';
+    case Url = 'URL';
+    case Flow = 'FLOW';
+    case Catalog = 'CATALOG';
+    case QuickReply = 'QUICK_REPLY';
 }
