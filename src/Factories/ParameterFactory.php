@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Ziming\LaravelCrispWhatsApp\Builders;
+namespace Ziming\LaravelCrispWhatsApp\Factories;
 
-class ParameterBuilder
+class ParameterFactory
 {
     public static function headerImage(string $fileName, string $link): array
     {

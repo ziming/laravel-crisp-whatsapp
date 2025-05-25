@@ -13,7 +13,7 @@ final class CrispWhatsAppMessage
 {
     public function __construct(
         public array $messageTemplate = [],
-        public array $crispOptions = [],
+        public array $crispOptions = ['type' => 'note'],
         public ?string $toNumber = null,
         public ?string $fromNumber = null,
     ) {
@@ -25,7 +25,7 @@ final class CrispWhatsAppMessage
         return new self;
     }
 
-    public function messageTemplate(array $messageTemplate): self
+    public function setRawMessageTemplate(array $messageTemplate): self
     {
         $this->messageTemplate = $messageTemplate;
 

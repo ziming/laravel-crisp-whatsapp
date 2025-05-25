@@ -22,16 +22,10 @@ final readonly class CrispWhatsAppChannel
 
         $toPhone = $crispWhatsAppMessage->toNumber ?: $notifiable->routeNotificationForCrispWhatsApp($notification);
 
-        // By default it is note, just making it explicit so that if Crisp changes the default in the future
-        // I will not get surprised
-        $crispOptions = $crispWhatsAppMessage->crispOptions ?: [
-            'type' => 'note',
-        ];
-
         $this->crispWhatsApp->sendMessageTemplate(
             $toPhone,
             $crispWhatsAppMessage->messageTemplate,
-            $crispOptions
+            $crispWhatsAppMessage->crispOptions,
         );
     }
 }
