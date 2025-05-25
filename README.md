@@ -30,12 +30,14 @@ php artisan vendor:publish --tag="laravel-crisp-whatsapp-config"
 This is the contents of the published config file:
 
 ```php
+declare(strict_types=1);
+
 return [
     'website_id' => env('CRISP_WEBSITE_ID'),
 
     'base_url' => env('CRISP_BASE_URL', 'https://plugins.crisp.chat/urn:crisp.im:whatsapp:0/wa/api/website'),
-    'identifier' => env('CRISP_WHATSAPP_IDENTIFIER'),
-    'access_key' => env('CRISP_WHATSAPP_ACCESS_KEY'),
+    'identifier' => env('CRISP_WHATSAPP_ACCESS_KEY_ID'),
+    'access_key' => env('CRISP_WHATSAPP_SECRET_ACCESS_KEY'),
     'from_phone' => env('CRISP_WHATSAPP_FROM_PHONE'),
 
     // change it to false when you are ready for production

@@ -18,17 +18,17 @@ readonly class LaravelCrispWhatsApp
 {
     private string $websiteId;
 
-    private string $identifier;
+    private string $accessKeyIdentifier;
 
-    private string $accessKey;
+    private string $secretAccessKey;
 
     private string $fromPhone;
 
     public function __construct()
     {
         $this->websiteId = config('crisp-whatsapp.website_id');
-        $this->identifier = config('crisp-whatsapp.identifier');
-        $this->accessKey = config('crisp-whatsapp.access_key');
+        $this->accessKeyIdentifier = config('crisp-whatsapp.access_key_id');
+        $this->secretAccessKey = config('crisp-whatsapp.secret_access_key');
         $this->fromPhone = config('crisp-whatsapp.from_phone');
     }
 
@@ -48,8 +48,8 @@ readonly class LaravelCrispWhatsApp
 
     ): array {
         $response = Http::withBasicAuth(
-            $this->identifier,
-            $this->accessKey
+            $this->accessKeyIdentifier,
+            $this->secretAccessKey
         )
             ->get(
                 config('crisp-whatsapp.base_url').
@@ -224,8 +224,8 @@ readonly class LaravelCrispWhatsApp
         $toPhone = config('crisp-whatsapp.test_mode') ? config('crisp-whatsapp.to_test_phone') : $toPhone;
 
         return Http::withBasicAuth(
-            $this->identifier,
-            $this->accessKey
+            $this->accessKeyIdentifier,
+            $this->secretAccessKey
         )
             ->post(config('crisp-whatsapp.base_url')."/{$this->websiteId}/template/send",
                 [
