@@ -7,7 +7,8 @@
 
 Send WhatsApp Notifications with Crisp!
 
-This package is not ready nor stable yet! I am still working on it.
+I am still testing this package & making changes, so I do not recommend it for production use yet as it is not 
+really stable in its API yet.
 
 ## Support us
 
