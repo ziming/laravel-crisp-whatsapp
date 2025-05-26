@@ -25,7 +25,7 @@ final class CrispWhatsAppMessage
         return new self;
     }
 
-    public function setRawMessageTemplate(array $messageTemplate): self
+    public function rawMessageTemplate(array $messageTemplate): self
     {
         $this->messageTemplate = $messageTemplate;
 
@@ -46,7 +46,7 @@ final class CrispWhatsAppMessage
         return $this;
     }
 
-    public function templateComponents(array $components): self
+    public function rawTemplateComponents(array $components): self
     {
         $this->messageTemplate['components'] = $components;
 
@@ -141,6 +141,9 @@ final class CrispWhatsAppMessage
         return $this;
     }
 
+    /**
+     * @param  array{'type': string, 'text': string} $parameters
+     */
     public function addTemplateBodyComponent(string $bodyText, array $parameters = []): self
     {
         $this->messageTemplate['components'][] = [
@@ -192,7 +195,10 @@ final class CrispWhatsAppMessage
         return $this;
     }
 
-    public function setRawCrispOptions(array $crispOptions): self
+    /**
+     * @param  array{'type'?: string, 'new_session'?: string, 'auto_resolve'?: string, 'user'?: array} $crispOptions
+     */
+    public function rawCrispOptions(array $crispOptions): self
     {
         $this->crispOptions = $crispOptions;
 

@@ -62,8 +62,10 @@ use Ziming\LaravelCrispWhatsApp\Enums\ParameterTypeEnum;
 use Ziming\LaravelCrispWhatsApp\CrispWhatsAppMessage;
 use Ziming\LaravelCrispWhatsApp\Interfaces\CrispWhatsAppNotification;
 use Ziming\LaravelCrispWhatsApp\CanReceiveCrispWhatsAppNotification;
-use Ziming\LaravelCrispWhatsApp\Factories\ParameterFactory;
+use Ziming\LaravelCrispWhatsApp\Factories\ComponentParameterFactory;
+use Ziming\LaravelCrispWhatsApp\Factories\ComponentFactory;
 use Ziming\LaravelCrispWhatsApp\Enums\ButtonSubTypeEnum;
+use Ziming\LaravelCrispWhatsApp\LaravelCrispWhatsApp;
 
 class OrderShippedNotification extends Notification implements CrispWhatsAppNotification
 {
@@ -79,21 +81,65 @@ class OrderShippedNotification extends Notification implements CrispWhatsAppNoti
     public function toCrispWhatsApp(CanReceiveCrispWhatsAppNotification $notifiable): CrispWhatsAppMessage
     {
         // See the source code for more methods on CrispWhatsAppMessage!
-        return CrispWhatsAppMessage::make()
+        $crispMessages = []
+        
+        // Example 1
+        $crispMessages[] =  CrispWhatsAppMessage::make()
             ->templateLanguage('en')
             ->toNumber($notifiable->mobile_phone)
             ->templateName('template-name')
-            ->addTemplateHeaderTextComponent('The header of your whatsapp template')
-            ->addTemplateBodyComponent(
+            ->addTemplateHeaderTextComponent(
                 // you may want to cache it if you can to hit Crisp API lesser!
+                LaravelCrispWhatsApp::make()->getMessageTemplateHeaderText('template-name'),
+                [
+                    ComponentParameterFactory::text('Order #12345'),
+                ]
+            )
+            ->addTemplateBodyComponent(
                 LaravelCrispWhatsApp::make()->getMessageTemplateBodyText('template-name'),
                 [
-                    ParameterFactory::text('Bob the Builder'),
+                    ComponentParameterFactory::text('Crisp'),
                 ]
             )
             ->addTemplateFooter('This is the footer of your whatsapp template')
             ->addTemplateButtonComponent('CTA', ButtonSubTypeEnum::Url)
             ->addTemplateButtonComponent('Not interested anymore');
+            
+           // Example 2
+           $crispMessages[] =  CrispWhatsAppMessage::make()
+                ->rawMessageTemplate([
+                    'language' => 'en_US',
+                    'name' => 'hello_world',
+                    'components' => [
+                        [
+                            'type' => 'HEADER',
+                            'FORMAT' => 'TEXT',
+                            'text' => 'Hello World',
+                        ],
+                        [
+                            'type' => 'BODY',
+                            'text' => 'This is a body text',
+                        ],
+                        [
+                            'type' => 'FOOTER',
+                            'text' => 'This is a footer text',
+                        ],
+                    ],
+                ]);
+                
+            // Example 3
+            $crispMessages[] => CrispWhatsAppMessage::make()
+                ->templateLanguage('en')
+                ->toNumber($notifiable->mobile_phone)
+                ->rawTemplateComponents([
+                    ComponentFactory::headerText('Order #12345'),
+                    ComponentFactory::body('{{1}} the Builder', ComponentParameterFactory::text('Crisp')),
+                    ComponentFactory::button('Call To Action', ButtonSubTypeEnum::Url)
+                    ComponentFactory::button('No', ButtonSubTypeEnum::QuickReply)
+                    ComponentFactory::footer('This is the footer of your whatsapp template'),
+                ]);
+         
+         return $crispMessages[random_int(0, 2)];
     }
 }
 ```
@@ -114,6 +160,11 @@ class User extends Model implements CanReceiveCrispWhatsAppNotification
     }
 }
 ```
+
+## Why are the classes final?
+
+That is selfish on my part, my hope is that it would incentivise you to make a pull request so that everyone benefits. 
+I would also get to know where my package is lacking especially in the early days of this library.
 
 ## Testing
 
