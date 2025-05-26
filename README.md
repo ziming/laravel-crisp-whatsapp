@@ -22,10 +22,10 @@ You can install the package via composer:
 composer require ziming/laravel-crisp-whatsapp
 ```
 
-You can publish the config file with:
+You may publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-crisp-whatsapp-config"
+php artisan vendor:publish --tag="crisp-whatsapp-config"
 ```
 
 This is the contents of the published config file:
