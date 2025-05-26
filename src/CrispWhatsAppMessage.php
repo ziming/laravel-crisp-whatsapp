@@ -175,13 +175,19 @@ final class CrispWhatsAppMessage
         return $this;
     }
 
-    public function crispOptions(CrispOptionTypeEnum $type = CrispOptionTypeEnum::Note, bool $newSession = false, bool $autoResolve = false): self
+    public function crispOptions(CrispOptionTypeEnum $type = CrispOptionTypeEnum::Note, bool $newSession = false, bool $autoResolve = false, ?string $crispOperatorUserId = null): self
     {
         $this->crispOptions = [
             'type' => $type,
             'new_session' => $newSession,
             'auto_resolve' => $autoResolve,
         ];
+
+        if ($crispOperatorUserId !== null) {
+            $this->crispOptions['user'] = [
+                'user_id' => $crispOperatorUserId,
+            ];
+        }
 
         return $this;
     }
