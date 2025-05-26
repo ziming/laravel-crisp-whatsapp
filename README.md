@@ -91,9 +91,6 @@ class OrderShippedNotification extends Notification implements CrispWhatsAppNoti
             ->addTemplateHeaderTextComponent(
                 // you may want to cache it if you can to hit Crisp API lesser!
                 LaravelCrispWhatsApp::make()->getMessageTemplateHeaderText('template-name'),
-                [
-                    ComponentParameterFactory::text('Order #12345'),
-                ]
             )
             ->addTemplateBodyComponent(
                 LaravelCrispWhatsApp::make()->getMessageTemplateBodyText('template-name'),
@@ -163,8 +160,8 @@ class User extends Model implements CanReceiveCrispWhatsAppNotification
 
 ## Why are the classes final?
 
-That is selfish on my part, my hope is that it would incentivise you to make a pull request so that everyone benefits. 
-I would also get to know where my package is lacking especially in the early days of this library.
+This is selfish on my part, my hope is that it would incentivise you to make a pull request so that everyone would benefit. 
+I will also get to know more about where my package is lacking especially in the early days of this library.
 
 ## Testing
 
