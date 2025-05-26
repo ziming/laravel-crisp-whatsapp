@@ -142,7 +142,7 @@ final class CrispWhatsAppMessage
     }
 
     /**
-     * @param  array{'type': string, 'text': string} $parameters
+     * @param  array{'type': string, 'text': string}  $parameters
      */
     public function addTemplateBodyComponent(string $bodyText, array $parameters = []): self
     {
@@ -196,7 +196,7 @@ final class CrispWhatsAppMessage
     }
 
     /**
-     * @param  array{'type'?: string, 'new_session'?: string, 'auto_resolve'?: string, 'user'?: array} $crispOptions
+     * @param  array{'type'?: string, 'new_session'?: string, 'auto_resolve'?: string, 'user'?: array}  $crispOptions
      */
     public function rawCrispOptions(array $crispOptions): self
     {

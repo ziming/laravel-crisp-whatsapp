@@ -10,7 +10,6 @@ use Ziming\LaravelCrispWhatsApp\Enums\HeaderComponentFormatEnum;
 
 final class ComponentFactory
 {
-
     public static function headerText(string $text): array
     {
         return [
@@ -90,7 +89,7 @@ final class ComponentFactory
     }
 
     /**
-     * @param  array{'type': string, 'text': string} $parameters
+     * @param  array{'type': string, 'text': string}  $parameters
      */
     public function body(string $bodyText, array $parameters = []): array
     {
