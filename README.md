@@ -62,6 +62,8 @@ use Ziming\LaravelCrispWhatsApp\Enums\ParameterTypeEnum;
 use Ziming\LaravelCrispWhatsApp\CrispWhatsAppMessage;
 use Ziming\LaravelCrispWhatsApp\Interfaces\CrispWhatsAppNotification;
 use Ziming\LaravelCrispWhatsApp\CanReceiveCrispWhatsAppNotification;
+use Ziming\LaravelCrispWhatsApp\Factories\ParameterFactory;
+use Ziming\LaravelCrispWhatsApp\Enums\ButtonSubTypeEnum;
 
 class OrderShippedNotification extends Notification implements CrispWhatsAppNotification
 {
@@ -86,14 +88,11 @@ class OrderShippedNotification extends Notification implements CrispWhatsAppNoti
                 // you may want to cache it if you can to hit Crisp API lesser!
                 LaravelCrispWhatsApp::make()->getMessageTemplateBodyText('template-name'),
                 [
-                    [
-                        'type' => ParameterTextEnum::Text,
-                        'text' => 'Stranger',
-                    ],
+                    ParameterFactory::text('Bob the Builder'),
                 ]
             )
             ->addTemplateFooter('This is the footer of your whatsapp template')
-            ->addTemplateButtonComponent('CTA', 'URL')
+            ->addTemplateButtonComponent('CTA', ButtonSubTypeEnum::Url)
             ->addTemplateButtonComponent('Not interested anymore');
     }
 }
@@ -111,7 +110,7 @@ class User extends Model implements CanReceiveCrispWhatsAppNotification
 {
     public function routeNotificationForCrispWhatsApp(): string
     {
-        return $this->mobile_phone;
+        return $this->attributes['mobile_phone'];
     }
 }
 ```
