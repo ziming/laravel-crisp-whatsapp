@@ -60,9 +60,9 @@ class ParameterFactory
     }
 
     /**
-     * @param string $flowToken The flow token used as an identifier defaults to unused. Used when sub_type is flow.
-     * @param array $flowActionData A json object with the data payload for the first screen. Used when sub_type is flow.
-     * @param string|null $thumbnailProductRetailerId Item SKU number, labeled as Content ID in the Commerce Manager. Required when sub_type is catalog.
+     * @param  string  $flowToken  The flow token used as an identifier defaults to unused. Used when sub_type is flow.
+     * @param  array  $flowActionData  A json object with the data payload for the first screen. Used when sub_type is flow.
+     * @param  string|null  $thumbnailProductRetailerId  Item SKU number, labeled as Content ID in the Commerce Manager. Required when sub_type is catalog.
      */
     public static function buttonFlow(string $flowToken, array $flowActionData, ?string $thumbnailProductRetailerId = null): array
     {
