@@ -5,7 +5,7 @@ declare(strict_types=1);
 return [
     'website_id' => env('CRISP_WEBSITE_ID'),
 
-    'base_url' => env('CRISP_BASE_URL', 'https://plugins.crisp.chat/urn:crisp.im:whatsapp:0/wa/api/website'),
+    'base_url' => env('CRISP_BASE_URL', 'https://plugins.crisp.chat/urn:crisp.im:whatsapp:0/wa/api/website/'),
     'access_key_id' => env('CRISP_WHATSAPP_ACCESS_KEY_ID'),
     'secret_access_key' => env('CRISP_WHATSAPP_SECRET_ACCESS_KEY'),
     'from_phone' => env('CRISP_WHATSAPP_FROM_PHONE'),
