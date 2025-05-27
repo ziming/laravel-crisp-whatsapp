@@ -53,6 +53,7 @@ final class CrispWhatsAppTemplate extends Data
 
         return null;
     }
+
     public function getFooterComponent(): ?WhatsAppTemplateFooterComponent
     {
         foreach ($this->components as $component) {

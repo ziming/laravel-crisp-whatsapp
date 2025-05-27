@@ -89,6 +89,7 @@ readonly class LaravelCrispWhatsApp
 
         return CrispWhatsAppTemplate::from($messageTemplate);
     }
+
     /**
      * @throws ConnectionException
      */
