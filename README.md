@@ -87,11 +87,8 @@ class OrderShippedNotification extends Notification implements CrispWhatsAppNoti
             ->templateLanguage('en')
             ->toNumber($notifiable->mobile_phone)
             ->templateName('template-name')
-            ->addTemplateHeaderTextComponent(
-                // you may want to cache it if you can to hit Crisp API lesser!
-                LaravelCrispWhatsApp::make()->getMessageTemplateHeaderText('template-name'),
-            )
             ->addTemplateBodyComponent(
+                // you may want to cache it if you can to hit Crisp API lesser!
                 LaravelCrispWhatsApp::make()->getMessageTemplateBodyText('template-name'),
                 [
                     ComponentParameterFactory::text('Crisp'),

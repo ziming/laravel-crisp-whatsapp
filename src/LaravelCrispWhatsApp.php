@@ -9,6 +9,7 @@ use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
+use Ziming\LaravelCrispWhatsApp\Data\CrispWhatsAppTemplate;
 use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateBodyComponent;
 use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateFooterComponent;
 use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateHeaderComponent;
@@ -40,14 +41,13 @@ readonly class LaravelCrispWhatsApp
     /**
      * @throws ConnectionException
      */
-    public function getMessageTemplates(
+    public function getMessageTemplatesResponse(
         bool $onlyApproved = true,
         bool $excludeSamples = true,
         int $limit = 20,
         string $after = ''
-
-    ): array {
-        $response = Http::withBasicAuth(
+    ): Response {
+        return Http::withBasicAuth(
             $this->accessKeyIdentifier,
             $this->secretAccessKey
         )
@@ -59,14 +59,40 @@ readonly class LaravelCrispWhatsApp
                 "filter_no_samples={$excludeSamples}&".
                 "after={$after}" // The docs are not clear what it means
             );
-
-        return $response->json();
     }
 
     /**
      * @throws ConnectionException
      */
-    public function getMessageTemplate(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?array
+    public function getMessageTemplates(
+        bool $onlyApproved = true,
+        bool $excludeSamples = true,
+        int $limit = 20,
+        string $after = ''
+
+    ): array {
+
+        return $this->getMessageTemplatesResponse($onlyApproved, $excludeSamples, $limit, $after)
+            ->json();
+    }
+
+    /**
+     * @throws ConnectionException
+     */
+    public function getMessageTemplate(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?CrispWhatsAppTemplate
+    {
+        $messageTemplate = $this->getMessageTemplateArray($name, $searchLimit, $onlyApproved, $excludeSamples, $after);
+
+        if ($messageTemplate === null) {
+            return null;
+        }
+
+        return CrispWhatsAppTemplate::from($messageTemplate);
+    }
+    /**
+     * @throws ConnectionException
+     */
+    public function getMessageTemplateArray(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?array
     {
         $response = $this->getMessageTemplates($onlyApproved, $excludeSamples, $searchLimit, $after);
 
@@ -80,7 +106,7 @@ readonly class LaravelCrispWhatsApp
 
         if ($messageTemplate === null && $pagingNext !== null) {
             sleep(1); // to not hit their rate limit
-            $messageTemplate = $this->getMessageTemplate($name, $searchLimit, $onlyApproved, $excludeSamples, $pagingNext);
+            $messageTemplate = $this->getMessageTemplateArray($name, $searchLimit, $onlyApproved, $excludeSamples, $pagingNext);
         }
 
         return $messageTemplate;
@@ -91,7 +117,7 @@ readonly class LaravelCrispWhatsApp
      */
     public function getMessageTemplateHeaderComponent(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?WhatsAppTemplateHeaderComponent
     {
-        $messageTemplate = $this->getMessageTemplate($name, $searchLimit, $onlyApproved, $excludeSamples, $after);
+        $messageTemplate = $this->getMessageTemplateArray($name, $searchLimit, $onlyApproved, $excludeSamples, $after);
 
         if ($messageTemplate === null) {
             return null;
@@ -111,7 +137,7 @@ readonly class LaravelCrispWhatsApp
      */
     public function getMessageTemplateBodyComponent(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?WhatsAppTemplateBodyComponent
     {
-        $messageTemplate = $this->getMessageTemplate($name, $searchLimit, $onlyApproved, $excludeSamples, $after);
+        $messageTemplate = $this->getMessageTemplateArray($name, $searchLimit, $onlyApproved, $excludeSamples, $after);
 
         if ($messageTemplate === null) {
             return null;
@@ -131,7 +157,7 @@ readonly class LaravelCrispWhatsApp
      */
     public function getMessageTemplateButtonsComponent(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?WhatsAppTemplateFooterComponent
     {
-        $messageTemplate = $this->getMessageTemplate($name, $searchLimit, $onlyApproved, $excludeSamples, $after);
+        $messageTemplate = $this->getMessageTemplateArray($name, $searchLimit, $onlyApproved, $excludeSamples, $after);
 
         if ($messageTemplate === null) {
             return null;
@@ -151,7 +177,7 @@ readonly class LaravelCrispWhatsApp
      */
     public function getMessageTemplateFooterComponent(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?WhatsAppTemplateFooterComponent
     {
-        $messageTemplate = $this->getMessageTemplate($name, $searchLimit, $onlyApproved, $excludeSamples, $after);
+        $messageTemplate = $this->getMessageTemplateArray($name, $searchLimit, $onlyApproved, $excludeSamples, $after);
 
         if ($messageTemplate === null) {
             return null;
