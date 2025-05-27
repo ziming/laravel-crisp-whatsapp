@@ -1,4 +1,4 @@
-# This is my package laravel-crisp-whatsapp
+# Laravel Crisp WhatsApp
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ziming/laravel-crisp-whatsapp.svg?style=flat-square)](https://packagist.org/packages/ziming/laravel-crisp-whatsapp)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/ziming/laravel-crisp-whatsapp/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/ziming/laravel-crisp-whatsapp/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -7,8 +7,7 @@
 
 Send WhatsApp Notifications with Crisp!
 
-I am still testing this package & making changes, so I do not recommend it for production use yet as it is not 
-really stable in its API yet.
+This package is still in testing phase, so I do not recommend it for production use yet
 
 ## Support us
 
