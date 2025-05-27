@@ -141,9 +141,6 @@ final class CrispWhatsAppMessage
         return $this;
     }
 
-    /**
-     * @param  array{'type': string, 'text': string}  $parameters
-     */
     public function addTemplateBodyComponent(string $bodyText, array $parameters = []): self
     {
         $this->messageTemplate['components'][] = [

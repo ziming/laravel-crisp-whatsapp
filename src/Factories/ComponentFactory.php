@@ -87,10 +87,7 @@ final class ComponentFactory
             ],
         ];
     }
-
-    /**
-     * @param  array{'type': string, 'text': string}  $parameters
-     */
+    
     public function body(string $bodyText, array $parameters = []): array
     {
         return [
