@@ -87,7 +87,7 @@ final class ComponentFactory
             ],
         ];
     }
-    
+
     public function body(string $bodyText, array $parameters = []): array
     {
         return [
