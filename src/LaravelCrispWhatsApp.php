@@ -214,7 +214,7 @@ readonly class LaravelCrispWhatsApp
                         $after
                     )
                         ?->text;
-            });
+                });
         }
 
         return $this->getMessageTemplateHeaderComponent(
