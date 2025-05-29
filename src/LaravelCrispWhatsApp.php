@@ -8,6 +8,8 @@ use GuzzleHttp\Promise\PromiseInterface;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Ziming\LaravelCrispWhatsApp\Data\CrispWhatsAppTemplate;
 use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateBodyComponent;
@@ -198,6 +200,23 @@ readonly class LaravelCrispWhatsApp
      */
     public function getMessageTemplateHeaderText(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?string
     {
+
+        if (config()->boolean('crisp-whatsapp.enable_caching') === true) {
+            return Cache::remember(
+                "crisp_whatsapp_template_header_text:{$name}",
+                Carbon::now()->addHour(),
+                function () use (&$name, &$searchLimit, &$onlyApproved, &$excludeSamples, &$after): ?string {
+                    return $this->getMessageTemplateHeaderComponent(
+                        $name,
+                        $searchLimit,
+                        $onlyApproved,
+                        $excludeSamples,
+                        $after
+                    )
+                        ?->text;
+            });
+        }
+
         return $this->getMessageTemplateHeaderComponent(
             $name,
             $searchLimit,
@@ -213,6 +232,23 @@ readonly class LaravelCrispWhatsApp
      */
     public function getMessageTemplateBodyText(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?string
     {
+
+        if (config()->boolean('crisp-whatsapp.enable_caching') === true) {
+            return Cache::remember(
+                "crisp_whatsapp_template_body_text:{$name}",
+                Carbon::now()->addHour(),
+                function () use (&$name, &$searchLimit, &$onlyApproved, &$excludeSamples, &$after): ?string {
+                    return $this->getMessageTemplateBodyComponent(
+                        $name,
+                        $searchLimit,
+                        $onlyApproved,
+                        $excludeSamples,
+                        $after
+                    )?->text;
+                }
+            );
+        }
+
         return $this->getMessageTemplateBodyComponent(
             $name,
             $searchLimit,
@@ -228,6 +264,22 @@ readonly class LaravelCrispWhatsApp
      */
     public function getMessageTemplateFooterText(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?string
     {
+        if (config()->boolean('crisp-whatsapp.enable_caching') === true) {
+            return Cache::remember(
+                "crisp_whatsapp_template_footer_text:{$name}",
+                Carbon::now()->addHour(),
+                function () use (&$name, &$searchLimit, &$onlyApproved, &$excludeSamples, &$after): ?string {
+                    return $this->getMessageTemplateFooterComponent(
+                        $name,
+                        $searchLimit,
+                        $onlyApproved,
+                        $excludeSamples,
+                        $after
+                    )?->text;
+                }
+            );
+        }
+
         return $this->getMessageTemplateFooterComponent(
             $name,
             $searchLimit,

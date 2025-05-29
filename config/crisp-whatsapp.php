@@ -15,4 +15,6 @@ return [
 
     // when test_mode is true, all whatsapp notifications will go to this number
     'to_test_phone' => env('CRISP_WHATSAPP_TO_TEST_PHONE'),
+
+    'enable_caching' => env('CRISP_WHATSAPP_ENABLE_CACHE', true),
 ];
