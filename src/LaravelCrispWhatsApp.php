@@ -348,7 +348,7 @@ readonly class LaravelCrispWhatsApp
     public function sendMessageTemplate(
         string $toPhone,
         array $messageTemplate,
-        array $crispOptions,
+        array $crispOptions = ['type' => 'note'],
         ?string $fromPhone = null
     ): PromiseInterface|Response {
 

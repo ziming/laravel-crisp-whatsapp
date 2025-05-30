@@ -28,7 +28,7 @@ class CrispWhatsAppMessageFactory
                     );
                 } elseif ($component['format'] === HeaderComponentFormatEnum::Image->value) {
                     $crispWhatsAppMessage->addTemplateHeaderImageComponent(
-                        $template['name'],
+                        $template['name'] . '.jpg',
                         $component['example']['header_handle'][0],
                     );
 
