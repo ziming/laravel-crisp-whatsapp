@@ -354,11 +354,12 @@ readonly class LaravelCrispWhatsApp
 
         $toPhone = config('crisp-whatsapp.test_mode') ? config('crisp-whatsapp.to_test_phone') : $toPhone;
 
-        return Http::withBasicAuth(
-            $this->accessKeyIdentifier,
-            $this->secretAccessKey
-        )
-            ->post(config('crisp-whatsapp.base_url')."/{$this->websiteId}/template/send",
+        return Http::baseUrl(config('crisp-whatsapp.base_url'))
+            ->withBasicAuth(
+                $this->accessKeyIdentifier,
+                $this->secretAccessKey
+            )
+            ->post("/{$this->websiteId}/template/send",
                 [
                     'from_number' => $fromPhone ?: $this->fromPhone,
                     'to_number' => $toPhone,
