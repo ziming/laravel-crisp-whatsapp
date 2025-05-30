@@ -99,7 +99,7 @@ readonly class LaravelCrispWhatsApp
             Cache::put("crisp_whatsapp_template:{$name}", $crispWhatsAppTemplate, Carbon::now()->addHour());
         }
 
-        return CrispWhatsAppTemplate::from($messageTemplate);
+        return $crispWhatsAppTemplate;
     }
 
     /**
