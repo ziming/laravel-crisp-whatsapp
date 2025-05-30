@@ -6,13 +6,13 @@ namespace Ziming\LaravelCrispWhatsApp\Enums;
 
 enum StatusEnum: string
 {
-    case Approved = 'approved';
-    case Rejected = 'rejected';
-    case In_Appeal = 'in_appeal';
-    case Pending = 'pending';
-    case Pending_Deletion = 'pending_deletion';
-    case Deleted = 'deleted';
-    case Disabled = 'disabled';
-    case Paused = 'paused';
-    case Limit_Exceeded = 'limit_exceeded';
+    case Approved = 'APPROVED';
+    case Rejected = 'REJECTED';
+    case In_Appeal = 'IN_APPEAL';
+    case Pending = 'PENDING';
+    case Pending_Deletion = 'PENDING_DELETION';
+    case Deleted = 'DELETED';
+    case Disabled = 'DISABLED';
+    case Paused = 'PAUSED';
+    case Limit_Exceeded = 'LIMIT_EXCEEDED';
 }
