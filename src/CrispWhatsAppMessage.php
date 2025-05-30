@@ -53,12 +53,13 @@ final class CrispWhatsAppMessage
         return $this;
     }
 
-    public function addTemplateHeaderTextComponent(string $headerText): self
+    public function addTemplateHeaderTextComponent(string $headerText, array $parameters = []): self
     {
         $this->messageTemplate['components'][] = [
             'type' => ComponentTypeEnum::Header,
             'format' => HeaderComponentFormatEnum::Text,
             'text' => $headerText,
+            'parameters' => $parameters,
         ];
 
         return $this;
