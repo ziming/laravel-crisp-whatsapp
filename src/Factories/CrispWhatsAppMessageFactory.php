@@ -51,5 +51,7 @@ class CrispWhatsAppMessageFactory
                 );
             }
         }
+
+        return $crispWhatsAppMessage;
     }
 }
