@@ -67,6 +67,7 @@ use Ziming\LaravelCrispWhatsApp\Factories\ComponentParameterFactory;
 use Ziming\LaravelCrispWhatsApp\Factories\ComponentFactory;
 use Ziming\LaravelCrispWhatsApp\Enums\ButtonSubTypeEnum;
 use Ziming\LaravelCrispWhatsApp\LaravelCrispWhatsApp;
+use Ziming\LaravelCrispWhatsApp\Facades\LaravelCrispWhatsApp as LaravelCrispWhatsAppFacade;
 
 class OrderShippedNotification extends Notification implements CrispWhatsAppNotification
 {
@@ -90,13 +91,15 @@ class OrderShippedNotification extends Notification implements CrispWhatsAppNoti
             ->toNumber($notifiable->mobile_phone)
             ->templateName('template-name')
             ->addTemplateBodyComponent(
-                // you may want to cache it if you can to hit Crisp API lesser!
                 LaravelCrispWhatsApp::make()->getMessageTemplateBodyText('template-name'),
                 [
                     ComponentParameterFactory::text('Crisp'),
                 ]
             )
-            ->addTemplateFooter('This is the footer of your whatsapp template')
+            ->addTemplateFooter(
+                // you may use the facade as well!
+                LaravelCrispWhatsAppFacade::getMessageTemplateFooterText('template-name')
+            )
             ->addTemplateButtonComponent('CTA', ButtonSubTypeEnum::Url)
             ->addTemplateButtonComponent('Not interested anymore');
             
