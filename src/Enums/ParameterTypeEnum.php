@@ -6,12 +6,12 @@ namespace Ziming\LaravelCrispWhatsApp\Enums;
 
 enum ParameterTypeEnum: string
 {
-    case Text = 'text';
+    case Text = 'TEXT';
 
-    case Image = 'image';
-    case Video = 'video';
-    case Document = 'document';
+    case Image = 'IMAGE';
+    case Video = 'VIDEO';
+    case Document = 'DOCUMENT';
 
-    case Action = 'action';
-    case Location = 'location';
+    case Action = 'ACTION';
+    case Location = 'LOCATION';
 }
