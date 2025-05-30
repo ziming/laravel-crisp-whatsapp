@@ -165,7 +165,7 @@ final class CrispWhatsAppMessage
         return $this;
     }
 
-    public function addTemplateFooter(string $footerText): self
+    public function addTemplateFooterComponent(string $footerText): self
     {
         $this->messageTemplate['components'][] = [
             'type' => ComponentTypeEnum::Footer,

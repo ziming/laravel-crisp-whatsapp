@@ -6,9 +6,9 @@ namespace Ziming\LaravelCrispWhatsApp\Enums;
 
 enum HeaderComponentFormatEnum: string
 {
-    case Text = 'text';
-    case Image = 'image';
-    case Video = 'video';
-    case Document = 'document';
-    case Location = 'location';
+    case Text = 'TEXT';
+    case Image = 'IMAGE';
+    case Video = 'VIDEO';
+    case Document = 'DOCUMENT';
+    case Location = 'LOCATION';
 }

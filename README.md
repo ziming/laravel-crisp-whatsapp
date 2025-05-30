@@ -96,7 +96,7 @@ class OrderShippedNotification extends Notification implements CrispWhatsAppNoti
                     ComponentParameterFactory::text('Crisp'),
                 ]
             )
-            ->addTemplateFooter(
+            ->addTemplateFooterComponent(
                 // you may use the facade as well!
                 LaravelCrispWhatsAppFacade::getMessageTemplateFooterText('template-name')
             )
