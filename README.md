@@ -156,6 +156,14 @@ class User extends Model implements CanReceiveCrispWhatsAppNotification
 }
 ```
 
+## Caching
+
+Caching is enabled by default. You can disable it by setting the `CRISP_WHATSAPP_ENABLE_CACHING` environment variable to `false`.
+
+When caching is enabled, the package will cache the message template for an hour. This is to reduce the number of API calls made to Crisp.
+
+This package also uses the `spatie/laravel-data` package to build the data objects. You may wish to refer its [structure caching documentation](https://spatie.be/docs/laravel-data/v4/advanced-usage/performance) too.
+
 ## Why are the classes final?
 
 This is selfish on my part, my hope is that it would incentivise you to make a pull request so that everyone would benefit. 
