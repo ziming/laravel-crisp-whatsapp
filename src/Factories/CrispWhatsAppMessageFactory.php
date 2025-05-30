@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Ziming\LaravelCrispWhatsApp\Factories;
 
-use Illuminate\Support\Arr;
 use Ziming\LaravelCrispWhatsApp\CrispWhatsAppMessage;
 use Ziming\LaravelCrispWhatsApp\Enums\ComponentTypeEnum;
 use Ziming\LaravelCrispWhatsApp\Enums\HeaderComponentFormatEnum;
@@ -18,7 +17,6 @@ class CrispWhatsAppMessageFactory
             ->templateName($template['name']);
 
         foreach ($template['components'] as $component) {
-
 
             if ($component['type'] === ComponentTypeEnum::Header->value) {
 
@@ -36,7 +34,6 @@ class CrispWhatsAppMessageFactory
                     $component['text'],
                     // TODO: figure out how to handle parameters later
                 );
-
 
             } elseif ($component['type'] === ComponentTypeEnum::Buttons->value) {
 
