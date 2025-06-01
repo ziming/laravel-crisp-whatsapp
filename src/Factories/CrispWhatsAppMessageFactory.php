@@ -29,13 +29,27 @@ class CrispWhatsAppMessageFactory
                     );
                 } elseif ($component['format'] === HeaderComponentFormatEnum::Image->value) {
 
-                    $imageUrl = $component['example']['header_handle'][0];
-                    $imageUrl = Str::before($imageUrl, '?');
 
-                    $crispWhatsAppMessage->addTemplateHeaderImageComponent(
-                        $template['name'],
-                        $imageUrl,
-                    );
+
+                    if ($headerParameters) {
+                        $crispWhatsAppMessage->addTemplateHeaderImageComponent(
+                            $headerParameters[0]['image']['filename'],
+                            $headerParameters[0]['image']['link'],
+                        );
+                    } else {
+
+                        $imageUrl = $component['example']['header_handle'][0];
+                        $imageUrl = Str::before($imageUrl, '?');
+
+                        $crispWhatsAppMessage->addTemplateHeaderImageComponent(
+                            $template['name'],
+                            $imageUrl,
+                        );
+                    }
+
+
+
+
 
                 } elseif ($component['format'] === HeaderComponentFormatEnum::Location->value) {
                     // TODO: To Implement this of course. What else?
@@ -80,11 +94,13 @@ class CrispWhatsAppMessageFactory
         return $crispWhatsAppMessage;
     }
 
-    public static function createFromTemplateObject(CrispWhatsAppTemplate $template): CrispWhatsAppMessage
+    public static function createFromTemplateObject(CrispWhatsAppTemplate $template, array $bodyParameters = [], array $headerParameters = []): CrispWhatsAppMessage
     {
         return self::createFromTemplateArray(
             // ->all() will cast to the enums type which is not what we want here
-            $template->toArray()
+            $template->toArray(),
+            $bodyParameters,
+            $headerParameters
         );
     }
 }
