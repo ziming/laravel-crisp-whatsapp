@@ -23,8 +23,8 @@ final readonly class CrispWhatsAppChannel
         $toPhone = $crispWhatsAppMessage->toNumber ?: $notifiable->routeNotificationForCrispWhatsApp($notification);
 
         $this->crispWhatsApp->sendMessageTemplate(
-            $toPhone,
             $crispWhatsAppMessage->messageTemplate,
+            $toPhone,
             $crispWhatsAppMessage->crispOptions,
         );
     }
