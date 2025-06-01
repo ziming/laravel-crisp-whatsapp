@@ -94,7 +94,7 @@ final class CrispWhatsAppMessage
         // Remove existing header image component if it exists
         $this->messageTemplate['components'] = array_filter(
             $this->messageTemplate['components'],
-            fn($component): bool => !($component['type'] === ComponentTypeEnum::Header && $component['format'] === HeaderComponentFormatEnum::Image)
+            fn ($component): bool => ! ($component['type'] === ComponentTypeEnum::Header && $component['format'] === HeaderComponentFormatEnum::Image)
         );
 
         // Add the new header image component
