@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ziming\LaravelCrispWhatsApp\Factories;
 
+use Illuminate\Support\Str;
 use Ziming\LaravelCrispWhatsApp\CrispWhatsAppMessage;
 use Ziming\LaravelCrispWhatsApp\Data\CrispWhatsAppTemplate;
 use Ziming\LaravelCrispWhatsApp\Enums\ComponentTypeEnum;
@@ -27,9 +28,14 @@ class CrispWhatsAppMessageFactory
                         $headerParameters,
                     );
                 } elseif ($component['format'] === HeaderComponentFormatEnum::Image->value) {
+
+                    $imageUrl = $component['example']['header_handle'][0];
+                    $imageUrl = Str::before($imageUrl, '?');
+
+
                     $crispWhatsAppMessage->addTemplateHeaderImageComponent(
                         $template['name'],
-                        $component['example']['header_handle'][0],
+                        $imageUrl,
                     );
 
                 } elseif ($component['format'] === HeaderComponentFormatEnum::Location->value) {
