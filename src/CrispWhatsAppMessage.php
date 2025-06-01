@@ -89,6 +89,18 @@ final class CrispWhatsAppMessage
         return $this;
     }
 
+    public function replaceTemplateHeaderImageComponent(string $fileName, string $link): self
+    {
+        // Remove existing header image component if it exists
+        $this->messageTemplate['components'] = array_filter(
+            $this->messageTemplate['components'],
+            fn($component): bool => !($component['type'] === ComponentTypeEnum::Header && $component['format'] === HeaderComponentFormatEnum::Image)
+        );
+
+        // Add the new header image component
+        return $this->addTemplateHeaderImageComponent($fileName, $link);
+    }
+
     public function addTemplateHeaderVideoComponent(string $link): self
     {
         $this->messageTemplate['components'][] = [
