@@ -32,7 +32,6 @@ class CrispWhatsAppMessageFactory
                     $imageUrl = $component['example']['header_handle'][0];
                     $imageUrl = Str::before($imageUrl, '?');
 
-
                     $crispWhatsAppMessage->addTemplateHeaderImageComponent(
                         $template['name'],
                         $imageUrl,
