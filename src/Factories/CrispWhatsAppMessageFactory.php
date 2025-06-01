@@ -29,8 +29,6 @@ class CrispWhatsAppMessageFactory
                     );
                 } elseif ($component['format'] === HeaderComponentFormatEnum::Image->value) {
 
-
-
                     if ($headerParameters) {
                         $crispWhatsAppMessage->addTemplateHeaderImageComponent(
                             $headerParameters[0]['image']['filename'],
@@ -46,10 +44,6 @@ class CrispWhatsAppMessageFactory
                             $imageUrl,
                         );
                     }
-
-
-
-
 
                 } elseif ($component['format'] === HeaderComponentFormatEnum::Location->value) {
                     // TODO: To Implement this of course. What else?

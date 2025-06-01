@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Ziming\LaravelCrispWhatsApp;
 
-use Illuminate\Support\Arr;
 use Ziming\LaravelCrispWhatsApp\Enums\ButtonSubTypeEnum;
 use Ziming\LaravelCrispWhatsApp\Enums\ComponentTypeEnum;
 use Ziming\LaravelCrispWhatsApp\Enums\CrispOptionTypeEnum;
