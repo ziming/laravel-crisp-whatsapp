@@ -52,8 +52,51 @@ return [
 
 ## Quick Usage (More documentation in the future!)
 
-Here is an example on how you can use it in a laravel notification class.
+Here are some examples on how you can use it in a laravel notification class.
 
+### Quick Example
+
+```php
+declare(strict_types=1);
+
+use Ziming\LaravelCrispWhatsApp\Enums\ParameterTypeEnum;
+use Ziming\LaravelCrispWhatsApp\CrispWhatsAppChannel;
+use Ziming\LaravelCrispWhatsApp\Enums\ParameterTypeEnum;
+use Ziming\LaravelCrispWhatsApp\CrispWhatsAppMessage;
+use Ziming\LaravelCrispWhatsApp\Interfaces\CrispWhatsAppNotification;
+use Ziming\LaravelCrispWhatsApp\CanReceiveCrispWhatsAppNotification;
+use Ziming\LaravelCrispWhatsApp\Factories\ComponentParameterFactory;
+use Ziming\LaravelCrispWhatsApp\Factories\ComponentFactory;
+use Ziming\LaravelCrispWhatsApp\Enums\ButtonSubTypeEnum;
+use Ziming\LaravelCrispWhatsApp\LaravelCrispWhatsApp;
+use Ziming\LaravelCrispWhatsApp\Facades\LaravelCrispWhatsApp as LaravelCrispWhatsAppFacade;
+
+class OrderShippedNotification extends Notification implements CrispWhatsAppNotification
+{
+    use Queueable;
+
+    public function via(CanReceiveCrispWhatsAppNotification $notifiable): array
+    {
+        return [
+            CrispWhatsAppChannel::class;
+        ];
+    }
+
+    public function toCrispWhatsApp(CanReceiveCrispWhatsAppNotification $notifiable): CrispWhatsAppMessage
+    {
+        $templateArray = LaravelCrispWhatsAppFacade::getMessageTemplateArray('hello_world');
+
+        return CrispWhatsAppMessageFactory::createFromTemplateArray(
+            $templateArray, 
+            ComponentParameterFactory::text('Crispy Fries')
+        );
+    }
+}
+
+```
+
+
+### Detailed Example
 ```php
 declare(strict_types=1);
 
