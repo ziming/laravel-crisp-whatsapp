@@ -55,12 +55,17 @@ final class CrispWhatsAppMessage
 
     public function addTemplateHeaderTextComponent(string $headerText, array $parameters = []): self
     {
-        $this->messageTemplate['components'][] = [
+        $headerComponent = [
             'type' => ComponentTypeEnum::Header,
             'format' => HeaderComponentFormatEnum::Text,
             'text' => $headerText,
-            'parameters' => $parameters,
         ];
+
+        if ($parameters) {
+            $headerComponent['parameters'] = $parameters;
+        }
+
+        $this->messageTemplate['components'][] = $headerComponent;
 
         return $this;
     }
@@ -144,24 +149,34 @@ final class CrispWhatsAppMessage
 
     public function addTemplateBodyComponent(string $bodyText, array $parameters = []): self
     {
-        $this->messageTemplate['components'][] = [
+        $bodyComponent = [
             'type' => ComponentTypeEnum::Body,
             'text' => $bodyText,
-            'parameters' => $parameters,
         ];
+
+        if ($parameters) {
+            $bodyComponent['parameters'] = $parameters;
+        }
+
+        $this->messageTemplate['components'][] = $bodyComponent;
 
         return $this;
     }
 
     public function addTemplateButtonComponent(string $buttonText, string|ButtonSubTypeEnum $subType = ButtonSubTypeEnum::QuickReply, array $parameters = [], int $index = 0): self
     {
-        $this->messageTemplate['components'][] = [
-            'type' => 'button',
+        $buttonComponent = [
+            'type' => 'BUTTON',
             'sub_type' => $subType,
             'text' => $buttonText,
             'index' => $index,
-            'parameters' => $parameters,
         ];
+
+        if ($parameters) {
+            $buttonComponent['parameters'] = $parameters;
+        }
+
+        $this->messageTemplate['components'][] = $buttonComponent;
 
         return $this;
     }

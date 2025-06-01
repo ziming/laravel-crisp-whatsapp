@@ -60,7 +60,7 @@ class CrispWhatsAppMessageFactory
                     $crispWhatsAppMessage->addTemplateButtonComponent(
                         $button['text'],
                         $button['type'],
-                        // TODO: How to handle button parameters?
+                        // TODO: Figure out how to do it for buttons since there can be more than 1 button
                     );
                 }
 
