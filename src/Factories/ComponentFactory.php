@@ -13,8 +13,8 @@ final class ComponentFactory
     public static function headerText(string $text): array
     {
         return [
-            'type' => ComponentTypeEnum::Header,
-            'format' => HeaderComponentFormatEnum::Text,
+            'type' => ComponentTypeEnum::Header->value,
+            'format' => HeaderComponentFormatEnum::Text->value,
             'text' => $text,
         ];
     }
@@ -22,8 +22,8 @@ final class ComponentFactory
     public static function headerImage(string $fileName, string $link): array
     {
         return [
-            'type' => ComponentTypeEnum::Header,
-            'format' => HeaderComponentFormatEnum::Image,
+            'type' => ComponentTypeEnum::Header->value,
+            'format' => HeaderComponentFormatEnum::Image->value,
             'parameters' => [
                 [
                     'type' => 'image',
@@ -39,8 +39,8 @@ final class ComponentFactory
     public static function headerVideo(string $link): array
     {
         return [
-            'type' => ComponentTypeEnum::Header,
-            'format' => HeaderComponentFormatEnum::Video,
+            'type' => ComponentTypeEnum::Header->value,
+            'format' => HeaderComponentFormatEnum::Video->value,
             'parameters' => [
                 [
                     'type' => 'video',
@@ -55,8 +55,8 @@ final class ComponentFactory
     public static function headerDocument(string $fileName, string $link): array
     {
         return [
-            'type' => ComponentTypeEnum::Header,
-            'format' => HeaderComponentFormatEnum::Document,
+            'type' => ComponentTypeEnum::Header->value,
+            'format' => HeaderComponentFormatEnum::Document->value,
             'parameters' => [
                 [
                     'type' => 'document',
@@ -72,8 +72,8 @@ final class ComponentFactory
     public static function headerLocation(string $name, string $address, float $latitude, float $longitude): array
     {
         return [
-            'type' => ComponentTypeEnum::Header,
-            'format' => HeaderComponentFormatEnum::Location,
+            'type' => ComponentTypeEnum::Header->value,
+            'format' => HeaderComponentFormatEnum::Location->value,
             'parameters' => [
                 [
                     'type' => 'location',
@@ -91,7 +91,7 @@ final class ComponentFactory
     public function body(string $bodyText, array $parameters = []): array
     {
         return [
-            'type' => ComponentTypeEnum::Body,
+            'type' => ComponentTypeEnum::Body->value,
             'text' => $bodyText,
             'parameters' => $parameters,
         ];
@@ -100,7 +100,7 @@ final class ComponentFactory
     public function button(string $buttonText, string|ButtonSubTypeEnum $subType = ButtonSubTypeEnum::QuickReply, array $parameters = [], int $index = 0): array
     {
         return [
-            'type' => 'button',
+            'type' => 'BUTTON',
             'sub_type' => $subType,
             'text' => $buttonText,
             'index' => $index,
@@ -111,7 +111,7 @@ final class ComponentFactory
     public function footer(string $footerText): array
     {
         return [
-            'type' => ComponentTypeEnum::Footer,
+            'type' => ComponentTypeEnum::Footer->value,
             'text' => $footerText,
         ];
     }
