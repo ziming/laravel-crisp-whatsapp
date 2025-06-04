@@ -46,7 +46,13 @@ class CrispWhatsAppMessageFactory
                     }
 
                 } elseif ($component['format'] === HeaderComponentFormatEnum::Location->value) {
-                    // TODO: To Implement this of course. What else?
+
+                    $crispWhatsAppMessage->addTemplateHeaderLocationComponent(
+                        $headerParameters['name'],
+                        $headerParameters['address'],
+                        $headerParameters['latitude'],
+                        $headerParameters['longitude'],
+                    );
 
                 } elseif ($component['format'] === HeaderComponentFormatEnum::Document->value) {
                     $crispWhatsAppMessage->addTemplateHeaderDocumentComponent(
