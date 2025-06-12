@@ -87,8 +87,10 @@ class OrderShippedNotification extends Notification implements CrispWhatsAppNoti
         $templateArray = LaravelCrispWhatsAppFacade::getMessageTemplateArray('hello_world');
 
         return CrispWhatsAppMessageFactory::createFromTemplateArray(
-            $templateArray, 
-            ComponentParameterFactory::text('Crispy Fries')
+            $templateArray,
+            [
+                ComponentParameterFactory::text('Crispy Fries'),
+            ],
         );
     }
 }
