@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 return [
-    'website_id' => env('CRISP_WEBSITE_ID'),
+    'website_id' => env('CRISP_WEBSITE_ID', ''),
 
     'base_url' => env('CRISP_BASE_URL', 'https://plugins.crisp.chat/urn:crisp.im:whatsapp:0/wa/api/website/'),
     'access_key_id' => env('CRISP_WHATSAPP_ACCESS_KEY_ID'),
