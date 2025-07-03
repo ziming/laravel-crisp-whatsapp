@@ -51,9 +51,9 @@ readonly class LaravelCrispWhatsApp
     ): Response {
         return Http::baseUrl(config('crisp-whatsapp.base_url'))
             ->withBasicAuth(
-            $this->accessKeyIdentifier,
-            $this->secretAccessKey
-        )
+                $this->accessKeyIdentifier,
+                $this->secretAccessKey
+            )
             ->get(
                 $this->websiteId.'/templates?'.
                 "limit={$limit}&".
