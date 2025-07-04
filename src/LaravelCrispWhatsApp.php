@@ -118,7 +118,7 @@ readonly class LaravelCrispWhatsApp
         });
 
         if ($messageTemplate === null && $pagingNext !== null) {
-            sleep(1);
+            sleep(2);
             $messageTemplate = $this->getMessageTemplateArray($name, $searchLimit, $onlyApproved, $excludeSamples, $pagingNext);
         }
 
