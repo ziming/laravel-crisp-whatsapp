@@ -59,6 +59,7 @@ Here are some examples on how you can use it in a laravel notification class.
 ```php
 declare(strict_types=1);
 
+use \Illuminate\Http\Client\ConnectionException;
 use Ziming\LaravelCrispWhatsApp\Enums\ParameterTypeEnum;
 use Ziming\LaravelCrispWhatsApp\CrispWhatsAppChannel;
 use Ziming\LaravelCrispWhatsApp\Enums\ParameterTypeEnum;
@@ -82,6 +83,9 @@ class OrderShippedNotification extends Notification implements CrispWhatsAppNoti
         ];
     }
 
+    /**
+     * @throws ConnectionException
+     */
     public function toCrispWhatsApp(CanReceiveCrispWhatsAppNotification $notifiable): CrispWhatsAppMessage
     {
         $templateArray = LaravelCrispWhatsAppFacade::getMessageTemplateArray('hello_world');
@@ -102,6 +106,7 @@ class OrderShippedNotification extends Notification implements CrispWhatsAppNoti
 ```php
 declare(strict_types=1);
 
+use \Illuminate\Http\Client\ConnectionException;
 use Ziming\LaravelCrispWhatsApp\Enums\ParameterTypeEnum;
 use Ziming\LaravelCrispWhatsApp\CrispWhatsAppChannel;
 use Ziming\LaravelCrispWhatsApp\Enums\ParameterTypeEnum;
@@ -125,6 +130,9 @@ class OrderShippedNotification extends Notification implements CrispWhatsAppNoti
         ];
     }
 
+    /**
+     * @throws ConnectionException
+     */
     public function toCrispWhatsApp(CanReceiveCrispWhatsAppNotification $notifiable): CrispWhatsAppMessage
     {
         // See the source code for more methods on CrispWhatsAppMessage!
