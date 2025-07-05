@@ -107,6 +107,10 @@ readonly class LaravelCrispWhatsApp
      */
     public function getMessageTemplateArray(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?array
     {
+        if (config()->boolean('crisp-whatsapp.enable_caching') === true && Cache::has("crisp_whatsapp_template_array:{$name}")) {
+            return Cache::get("crisp_whatsapp_template_array:{$name}");
+        }
+
         $response = $this->getMessageTemplates($onlyApproved, $excludeSamples, $searchLimit, $after);
 
         $templates = Arr::get($response, 'data.templates');
@@ -118,8 +122,12 @@ readonly class LaravelCrispWhatsApp
         });
 
         if ($messageTemplate === null && $pagingNext !== null) {
-            sleep(2);
+            sleep(1);
             $messageTemplate = $this->getMessageTemplateArray($name, $searchLimit, $onlyApproved, $excludeSamples, $pagingNext);
+        }
+
+        if ($messageTemplate !== null && config()->boolean('crisp-whatsapp.enable_caching') === true) {
+            Cache::put("crisp_whatsapp_template_array:{$name}", $messageTemplate, Carbon::now()->addHour());
         }
 
         return $messageTemplate;
