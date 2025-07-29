@@ -7,7 +7,10 @@
 
 Send WhatsApp Notifications with Crisp!
 
-This package is still in testing phase, so I do not recommend it for production use yet
+This package is still in testing phase, so I do not recommend it for production use yet.
+
+As in, it is used heavily in my production environment, but I do not recommend it for 
+others to use on their production yet as I am still fine-tuning the API design.
 
 ## Support us
 
