@@ -42,7 +42,7 @@ final class ComponentParameterFactory
                     'flow_token' => $flowToken,
                     'flow_action_data' => $flowActionData,
                 ],
-            ]
+            ],
         ];
     }
 }
