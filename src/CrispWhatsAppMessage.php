@@ -42,6 +42,7 @@ final class CrispWhatsAppMessage
     public function templateName(string $name): self
     {
         $this->messageTemplate['name'] = $name;
+
         return $this;
     }
 
