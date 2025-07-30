@@ -12,7 +12,7 @@ use Ziming\LaravelCrispWhatsApp\Enums\HeaderComponentFormatEnum;
 
 class CrispWhatsAppMessageFactory
 {
-    public static function createFromTemplateArray(array $template, array $bodyParameters = [], array $headerParameters = []): CrispWhatsAppMessage
+    public static function createFromTemplateArray(array $template, array $bodyParameters = [], array $headerParameters = [], array $buttonParameters = []): CrispWhatsAppMessage
     {
         $crispWhatsAppMessage = CrispWhatsAppMessage::make()
             ->templateLanguage($template['language'])
@@ -75,11 +75,12 @@ class CrispWhatsAppMessageFactory
 
             } elseif ($component['type'] === ComponentTypeEnum::Buttons->value) {
 
-                foreach ($component['buttons'] as $button) {
+                for ($i = 0; $i < count($component['buttons']); $i++) {
+                    $button = $component['buttons'][$i];
                     $crispWhatsAppMessage->addTemplateButtonComponent(
                         $button['text'],
                         $button['type'],
-                        // TODO: Figure out how to do it for buttons since there can be more than 1 button
+                        $buttonParameters[$i],
                     );
                 }
 
@@ -94,13 +95,14 @@ class CrispWhatsAppMessageFactory
         return $crispWhatsAppMessage;
     }
 
-    public static function createFromTemplateObject(CrispWhatsAppTemplate $template, array $bodyParameters = [], array $headerParameters = []): CrispWhatsAppMessage
+    public static function createFromTemplateObject(CrispWhatsAppTemplate $template, array $bodyParameters = [], array $headerParameters = [], array $buttonParameters = []): CrispWhatsAppMessage
     {
         return self::createFromTemplateArray(
             // ->all() will cast to the enums type which is not what we want here
             $template->toArray(),
             $bodyParameters,
-            $headerParameters
+            $headerParameters,
+            $buttonParameters,
         );
     }
 }
