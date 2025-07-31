@@ -78,7 +78,6 @@ class CrispWhatsAppMessageFactory
                 for ($i = 0; $i < count($component['buttons']); $i++) {
                     $button = $component['buttons'][$i];
 
-
                     $crispWhatsAppMessage->addTemplateButtonComponent(
                         $button['text'],
                         $button['type'],
