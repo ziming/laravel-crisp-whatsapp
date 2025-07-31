@@ -11,6 +11,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Psr\SimpleCache\InvalidArgumentException;
 use Ziming\LaravelCrispWhatsApp\Data\CrispWhatsAppTemplate;
 use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateBodyComponent;
 use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateFooterComponent;
@@ -80,11 +81,12 @@ readonly class LaravelCrispWhatsApp
 
     /**
      * @throws ConnectionException
+     * @throws InvalidArgumentException
      */
     public function getMessageTemplate(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?CrispWhatsAppTemplate
     {
         if (config()->boolean('crisp-whatsapp.enable_caching') === true && Cache::has("crisp_whatsapp_template:{$name}")) {
-            return Cache::get("crisp_whatsapp_template:{$name}");
+            return Cache::memo()->get("crisp_whatsapp_template:{$name}");
         }
 
         $messageTemplate = $this->getMessageTemplateArray($name, $searchLimit, $onlyApproved, $excludeSamples, $after);
@@ -104,11 +106,12 @@ readonly class LaravelCrispWhatsApp
 
     /**
      * @throws ConnectionException
+     * @throws InvalidArgumentException
      */
     public function getMessageTemplateArray(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?array
     {
         if (config()->boolean('crisp-whatsapp.enable_caching') === true && Cache::has("crisp_whatsapp_template_array:{$name}")) {
-            return Cache::get("crisp_whatsapp_template_array:{$name}");
+            return Cache::memo()->get("crisp_whatsapp_template_array:{$name}");
         }
 
         $response = $this->getMessageTemplates($onlyApproved, $excludeSamples, $searchLimit, $after);
@@ -135,11 +138,12 @@ readonly class LaravelCrispWhatsApp
 
     /**
      * @throws ConnectionException
+     * @throws InvalidArgumentException
      */
     public function getMessageTemplateHeaderComponent(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?WhatsAppTemplateHeaderComponent
     {
         if (config()->boolean('crisp-whatsapp.enable_caching') === true && Cache::has("crisp_whatsapp_template_header_component:{$name}")) {
-            return Cache::get("crisp_whatsapp_template_header_component:{$name}");
+            return Cache::memo()->get("crisp_whatsapp_template_header_component:{$name}");
         }
 
         $messageTemplate = $this->getMessageTemplateArray($name, $searchLimit, $onlyApproved, $excludeSamples, $after);
@@ -166,11 +170,12 @@ readonly class LaravelCrispWhatsApp
 
     /**
      * @throws ConnectionException
+     * @throws InvalidArgumentException
      */
     public function getMessageTemplateBodyComponent(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?WhatsAppTemplateBodyComponent
     {
         if (config()->boolean('crisp-whatsapp.enable_caching') === true && Cache::has("crisp_whatsapp_template_body_component:{$name}")) {
-            return Cache::get("crisp_whatsapp_template_body_component:{$name}");
+            return Cache::memo()->get("crisp_whatsapp_template_body_component:{$name}");
         }
 
         $messageTemplate = $this->getMessageTemplateArray($name, $searchLimit, $onlyApproved, $excludeSamples, $after);
@@ -197,11 +202,12 @@ readonly class LaravelCrispWhatsApp
 
     /**
      * @throws ConnectionException
+     * @throws InvalidArgumentException
      */
     public function getMessageTemplateButtonsComponent(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?WhatsAppTemplateFooterComponent
     {
         if (config()->boolean('crisp-whatsapp.enable_caching') === true && Cache::has("crisp_whatsapp_template_buttons_component:{$name}")) {
-            return Cache::get("crisp_whatsapp_template_buttons_component:{$name}");
+            return Cache::memo()->get("crisp_whatsapp_template_buttons_component:{$name}");
         }
 
         $messageTemplate = $this->getMessageTemplateArray($name, $searchLimit, $onlyApproved, $excludeSamples, $after);
@@ -227,11 +233,12 @@ readonly class LaravelCrispWhatsApp
 
     /**
      * @throws ConnectionException
+     * @throws InvalidArgumentException
      */
     public function getMessageTemplateFooterComponent(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?WhatsAppTemplateFooterComponent
     {
         if (config()->boolean('crisp-whatsapp.enable_caching') === true && Cache::has("crisp_whatsapp_template_footer_component:{$name}")) {
-            return Cache::get("crisp_whatsapp_template_footer_component:{$name}");
+            return Cache::memo()->get("crisp_whatsapp_template_footer_component:{$name}");
         }
 
         $messageTemplate = $this->getMessageTemplateArray($name, $searchLimit, $onlyApproved, $excludeSamples, $after);
