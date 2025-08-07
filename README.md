@@ -15,8 +15,7 @@ You can use my [referral link to sign up for Crisp & be a paid customer at the
 essential or plus plan.](https://crisp.chat/?track=KszsQ9SFo8)
 
 I highly recommend Crisp Chat if you are looking for a chat support SaaS for your business website. As it charges a flat 
-monthly fee instead of charging by per seat.
-
+monthly fee instead of charging by per seat. To use whatsapp for Crisp, you will need to subscribe at the essential or plus plan.
 
 ## Installation
 
