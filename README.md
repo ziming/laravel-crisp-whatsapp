@@ -7,14 +7,16 @@
 
 Send WhatsApp Notifications with Crisp!
 
-This package is still in testing phase, so I do not recommend it for production use yet.
+This package is near stable but not 1.0 yet, as I'm still fine-tuning the API Design.
 
-As in, it is used heavily in my production environment, but I do not recommend it for 
-others to use on their production yet as I am still fine-tuning the API design.
+## Support me
 
-## Support us
+You can use my [referral link to sign up for Crisp & be a paid customer at the 
+essential or plus plan.](https://crisp.chat/?track=KszsQ9SFo8)
 
-You can donate to my github sponsor account.
+I highly recommend Crisp Chat if you are looking for a chat support SaaS for your business website. As it charges a flat 
+monthly fee instead of charging by per seat.
+
 
 ## Installation
 
