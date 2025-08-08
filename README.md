@@ -5,16 +5,16 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/ziming/laravel-crisp-whatsapp/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/ziming/laravel-crisp-whatsapp/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/ziming/laravel-crisp-whatsapp.svg?style=flat-square)](https://packagist.org/packages/ziming/laravel-crisp-whatsapp)
 
-Send WhatsApp Notifications with Crisp!
+Send WhatsApp Notifications with Crisp Chat!
 
 ## Support me
 
-You can use my [referral link to sign up for Crisp. I get a small reward if you become a paid customer at the Essentials or Plus Plan.](https://crisp.chat/?track=KszsQ9SFo8)
+You can use my [referral link to sign up for Crisp Chat. I get a small reward if you become a paid customer at the Essentials or Plus Plan.](https://crisp.chat/?track=KszsQ9SFo8)
 
 I highly recommend Crisp Chat if you are looking for a chat support SaaS for your website. As it charges a flat 
 monthly fee instead of charging by per seat. It has a very nice UI, powerful bot builder & healthy plugins ecosystem as well.
 
-To use Whatsapp for Crisp, you will need to subscribe at the Essential or Plus plan.
+To use Whatsapp for Crisp, you will need to subscribe at the [Essential or Plus](https://crisp.chat/?track=KszsQ9SFo8) plan as well
 
 ## Installation
 

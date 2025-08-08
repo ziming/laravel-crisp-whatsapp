@@ -13,6 +13,6 @@ enum ComponentTypeEnum: string
     // When retrieving, it is BUTTONS
     case Buttons = 'BUTTONS';
 
-    // When sending, it it BUTTON. No idea why the inconsistency.
+    // When sending, it is BUTTON. No idea why the inconsistency.
     case Button = 'BUTTON';
 }
