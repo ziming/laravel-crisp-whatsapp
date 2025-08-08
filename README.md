@@ -7,15 +7,14 @@
 
 Send WhatsApp Notifications with Crisp!
 
-This package is near stable but not 1.0 yet, as I'm still fine-tuning the API Design.
-
 ## Support me
 
-You can use my [referral link to sign up for Crisp & be a paid customer at the 
-essential or plus plan.](https://crisp.chat/?track=KszsQ9SFo8)
+You can use my [referral link to sign up for Crisp. I get a small reward if you become a paid customer at the Essentials or Plus Plan.](https://crisp.chat/?track=KszsQ9SFo8)
 
-I highly recommend Crisp Chat if you are looking for a chat support SaaS for your business website. As it charges a flat 
-monthly fee instead of charging by per seat. To use whatsapp for Crisp, you will need to subscribe at the essential or plus plan.
+I highly recommend Crisp Chat if you are looking for a chat support SaaS for your website. As it charges a flat 
+monthly fee instead of charging by per seat. It has a very nice UI, powerful bot builder & healthy plugins ecosystem as well.
+
+To use Whatsapp for Crisp, you will need to subscribe at the Essential or Plus plan.
 
 ## Installation
 
