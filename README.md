@@ -16,6 +16,9 @@ monthly fee instead of charging by per seat. It has a very nice UI, powerful bot
 
 To use Whatsapp for Crisp, you will need to subscribe at the [Essential or Plus](https://crisp.chat/?track=KszsQ9SFo8) plan as well
 
+Side Note: Looking to integrate with Crisp in non WhatsApp ways? Check out my [Laravel Crisp package](https://github.com/ziming/laravel-crisp) too!
+
+
 ## Installation
 
 You can install the package via composer:
