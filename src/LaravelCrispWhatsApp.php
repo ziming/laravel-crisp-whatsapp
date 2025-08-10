@@ -27,8 +27,7 @@ final class LaravelCrispWhatsApp
         #[\SensitiveParameter]
         private ?string $secretAccessKey = null,
         private ?string $fromPhone = null,
-    )
-    {
+    ) {
         $this->websiteId = $websiteId ?? config('crisp-whatsapp.website_id');
         $this->accessKeyIdentifier = $accessKeyIdentifier ?? config('crisp-whatsapp.access_key_id');
         $this->secretAccessKey = $secretAccessKey ?? config('crisp-whatsapp.secret_access_key');
