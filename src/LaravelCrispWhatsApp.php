@@ -18,22 +18,21 @@ use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateFooterComponent;
 use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateHeaderComponent;
 use Ziming\LaravelCrispWhatsApp\Enums\ComponentTypeEnum;
 
-readonly class LaravelCrispWhatsApp
+final class LaravelCrispWhatsApp
 {
-    private string $websiteId;
-
-    private string $accessKeyIdentifier;
-
-    private string $secretAccessKey;
-
-    private string $fromPhone;
-
-    public function __construct()
+    public function __construct(
+        private ?string $websiteId = null,
+        #[\SensitiveParameter]
+        private ?string $accessKeyIdentifier = null,
+        #[\SensitiveParameter]
+        private ?string $secretAccessKey = null,
+        private ?string $fromPhone = null,
+    )
     {
-        $this->websiteId = config('crisp-whatsapp.website_id');
-        $this->accessKeyIdentifier = config('crisp-whatsapp.access_key_id');
-        $this->secretAccessKey = config('crisp-whatsapp.secret_access_key');
-        $this->fromPhone = config('crisp-whatsapp.from_phone');
+        $this->websiteId = $websiteId ?? config('crisp-whatsapp.website_id');
+        $this->accessKeyIdentifier = $accessKeyIdentifier ?? config('crisp-whatsapp.access_key_id');
+        $this->secretAccessKey = $secretAccessKey ?? config('crisp-whatsapp.secret_access_key');
+        $this->fromPhone = $fromPhone ?? config('crisp-whatsapp.from_phone');
     }
 
     public static function make(): self
