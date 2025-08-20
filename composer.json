@@ -68,6 +68,10 @@
             "aliases": {
                 "LaravelCrispWhatsApp": "Ziming\\LaravelCrispWhatsApp\\Facades\\LaravelCrispWhatsApp"
             }
+        },
+        "thanks": {
+            "name": "ziming/laravel-crisp",
+            "url": "https://github.com/ziming/laravel-crisp"
         }
     },
     "minimum-stability": "dev",
