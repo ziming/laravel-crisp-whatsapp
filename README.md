@@ -60,7 +60,7 @@ return [
 
 Here are some examples on how you can use it in a laravel notification class.
 
-### Quick Example
+### Quick Example (Recommended as it greatly simplify things)
 
 ```php
 declare(strict_types=1);
@@ -108,7 +108,7 @@ class OrderShippedNotification extends Notification implements CrispWhatsAppNoti
 ```
 
 
-### Detailed Example
+### Detailed Example (If you want a lot more control over your whatsapp message)
 ```php
 declare(strict_types=1);
 
