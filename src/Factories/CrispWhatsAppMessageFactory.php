@@ -31,8 +31,8 @@ class CrispWhatsAppMessageFactory
 
                     if ($headerParameters) {
                         $crispWhatsAppMessage->addTemplateHeaderImageComponent(
-                            $headerParameters[0]['image']['filename'],
-                            $headerParameters[0]['image']['link'],
+                            $headerParameters['filename'],
+                            $headerParameters['link'],
                         );
                     } else {
 

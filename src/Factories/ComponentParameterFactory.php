@@ -17,13 +17,18 @@ final class ComponentParameterFactory
     public static function headerImage(string $fileName, string $link): array
     {
         return [
-            [
-                'type' => 'image',
-                'image' => [
-                    'filename' => $fileName,
-                    'link' => $link,
-                ],
-            ],
+            'filename' => $fileName,
+            'link' => $link,
+        ];
+    }
+
+    public static function headerLocation(string $name, ?string $address, float $latitude, float $longitude): array
+    {
+        return [
+            'name' => $name,
+            'address' => $address,
+            'latitude' => $latitude,
+            'longitude' => $longitude,
         ];
     }
 
