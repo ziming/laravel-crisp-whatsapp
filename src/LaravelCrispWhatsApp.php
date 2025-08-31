@@ -263,7 +263,7 @@ final class LaravelCrispWhatsApp
     }
 
     /**
-     * @throws ConnectionException
+     * @throws ConnectionException|InvalidArgumentException
      */
     public function getMessageTemplateHeaderText(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?string
     {
@@ -326,7 +326,7 @@ final class LaravelCrispWhatsApp
     }
 
     /**
-     * @throws ConnectionException
+     * @throws ConnectionException|InvalidArgumentException
      */
     public function getMessageTemplateFooterText(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?string
     {
