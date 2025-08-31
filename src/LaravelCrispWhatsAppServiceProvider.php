@@ -13,6 +13,7 @@ final class LaravelCrispWhatsAppServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('laravel-crisp-whatsapp')
+            ->hasMigration('create_outgoing_crisp_whatsapp_messages_table')
             ->hasConfigFile();
     }
 }

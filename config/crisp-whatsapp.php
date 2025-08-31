@@ -17,4 +17,6 @@ return [
     'to_test_phone' => env('CRISP_WHATSAPP_TO_TEST_PHONE'),
 
     'enable_caching' => env('CRISP_WHATSAPP_ENABLE_CACHING', true),
+
+    'log_outgoing_requests' => env('CRISP_WHATSAPP_LOG_OUTGOING_REQUESTS', false),
 ];

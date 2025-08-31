@@ -17,6 +17,7 @@ use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateBodyComponent;
 use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateFooterComponent;
 use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateHeaderComponent;
 use Ziming\LaravelCrispWhatsApp\Enums\ComponentTypeEnum;
+use Ziming\LaravelCrispWhatsApp\Models\OutgoingCrispWhatsAppMessage;
 
 final class LaravelCrispWhatsApp
 {
@@ -367,7 +368,7 @@ final class LaravelCrispWhatsApp
 
         $toPhone = config('crisp-whatsapp.test_mode') ? config('crisp-whatsapp.to_test_phone') : $toPhone;
 
-        return Http::baseUrl(config('crisp-whatsapp.base_url'))
+        $response = Http::baseUrl(config('crisp-whatsapp.base_url'))
             ->withBasicAuth(
                 $this->accessKeyIdentifier,
                 $this->secretAccessKey
@@ -379,5 +380,18 @@ final class LaravelCrispWhatsApp
                     'crisp_options' => $crispOptions,
                     'message_template' => $messageTemplate,
                 ]);
+
+        if (config('crisp_whatsapp_log_outgoing_requests') === true) {
+            OutgoingCrispWhatsAppMessage::create([
+                'error' => $response->json('error'),
+                'request_id' => $response->json('data.request_id'),
+                'reason' => $response->json('reason'),
+                'message_template' => $messageTemplate,
+                'response_data' => $response->json(),
+                'status_code' => $response->status(),
+            ]);
+        }
+
+        return $response;
     }
 }
