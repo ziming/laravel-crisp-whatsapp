@@ -18,5 +18,5 @@ return [
 
     'enable_caching' => env('CRISP_WHATSAPP_ENABLE_CACHING', true),
 
-    'log_outgoing_requests' => env('CRISP_WHATSAPP_LOG_OUTGOING_REQUESTS', false),
+    'log_requests' => env('CRISP_WHATSAPP_LOG_REQUESTS', false),
 ];

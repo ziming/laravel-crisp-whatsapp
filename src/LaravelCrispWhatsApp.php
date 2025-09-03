@@ -381,7 +381,7 @@ final class LaravelCrispWhatsApp
                     'message_template' => $messageTemplate,
                 ]);
 
-        if (config('crisp_whatsapp_log_outgoing_requests') === true) {
+        if (config('crisp-whatsapp.log_requests') === true) {
             CrispWhatsAppMessageLog::create([
                 'error' => $response->json('error'),
                 'request_id' => $response->json('data.request_id'),

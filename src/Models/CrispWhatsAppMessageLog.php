@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CrispWhatsAppMessageLog extends Model
 {
-    protected $table = 'outgoing_crisp_whatsapp_messages';
+    protected $table = 'crisp_whatsapp_message_logs';
 
     protected $guarded = [
         'id',
