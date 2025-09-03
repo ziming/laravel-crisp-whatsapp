@@ -10,7 +10,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('outgoing_crisp_whatsapp_messages', function (Blueprint $table): void {
+        Schema::create('crisp_whatsapp_message_logs', function (Blueprint $table): void {
             $table->id();
             $table->uuid('request_id')->unique()->nullable();
             $table->boolean('error');
@@ -19,12 +19,15 @@ return new class extends Migration
             $table->json('response_data');
             $table->smallInteger('status_code');
 
+            // if there is a callback and matches the request id earlier.
+            $table->json('callback_response_data')->nullable();
+
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('outgoing_crisp_whatsapp_messages');
+        Schema::dropIfExists('crisp_whatsapp_message_logs');
     }
 };

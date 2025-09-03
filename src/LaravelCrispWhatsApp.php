@@ -17,7 +17,7 @@ use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateBodyComponent;
 use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateFooterComponent;
 use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateHeaderComponent;
 use Ziming\LaravelCrispWhatsApp\Enums\ComponentTypeEnum;
-use Ziming\LaravelCrispWhatsApp\Models\OutgoingCrispWhatsAppMessage;
+use Ziming\LaravelCrispWhatsApp\Models\CrispWhatsAppMessageLog;
 
 final class LaravelCrispWhatsApp
 {
@@ -382,7 +382,7 @@ final class LaravelCrispWhatsApp
                 ]);
 
         if (config('crisp_whatsapp_log_outgoing_requests') === true) {
-            OutgoingCrispWhatsAppMessage::create([
+            CrispWhatsAppMessageLog::create([
                 'error' => $response->json('error'),
                 'request_id' => $response->json('data.request_id'),
                 'reason' => $response->json('reason'),
