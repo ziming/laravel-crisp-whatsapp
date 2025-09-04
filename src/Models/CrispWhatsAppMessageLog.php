@@ -18,10 +18,11 @@ class CrispWhatsAppMessageLog extends Model
     {
         return [
             'id' => 'integer',
+
             'error' => 'boolean',
             'message_template' => 'array',
-            'response_data' => 'array',
             'status_code' => 'integer',
+            'response_data' => 'array',
 
             'callback_response_data' => 'array',
         ];
