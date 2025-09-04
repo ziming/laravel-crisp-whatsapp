@@ -295,6 +295,7 @@ final class LaravelCrispWhatsApp
 
     /**
      * @throws ConnectionException
+     * @throws InvalidArgumentException
      */
     public function getMessageTemplateBodyText(string $name, int $searchLimit = 20, bool $onlyApproved = true, bool $excludeSamples = true, string $after = ''): ?string
     {
@@ -386,6 +387,7 @@ final class LaravelCrispWhatsApp
                 'error' => $response->json('error'),
                 'request_id' => $response->json('data.request_id'),
                 'reason' => $response->json('reason'),
+                'template_name' => $messageTemplate['name'],
                 'message_template' => $messageTemplate,
                 'response_data' => $response->json(),
                 'status_code' => $response->status(),
