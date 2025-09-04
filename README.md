@@ -33,6 +33,14 @@ You may publish the config file with:
 php artisan vendor:publish --tag="crisp-whatsapp-config"
 ```
 
+You may also publish the migration file if you want to log your whatsapp requests with
+
+```bash
+php artisan vendor:publish --tag="crisp-whatsapp-migrations"```
+````
+
+And set `CRISP_WHATSAPP_LOG_REQUESTS` in your `.env` file to true
+
 This is the contents of the published config file:
 
 ```php
@@ -53,6 +61,9 @@ return [
     'to_test_phone' => env('CRISP_WHATSAPP_TO_TEST_PHONE'),
     
     'enable_caching' => env('CRISP_WHATSAPP_ENABLE_CACHE', true),
+    
+    // if you want to log whatsapp requests, you will need to publish migration if this is true
+    'log_requests' => env('CRISP_WHATSAPP_LOG_REQUESTS', false),
 ];
 ```
 

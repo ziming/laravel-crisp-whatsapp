@@ -18,5 +18,6 @@ return [
 
     'enable_caching' => env('CRISP_WHATSAPP_ENABLE_CACHING', true),
 
+    // if you want to log whatsapp requests, you will need to publish migration if this is true
     'log_requests' => env('CRISP_WHATSAPP_LOG_REQUESTS', false),
 ];
