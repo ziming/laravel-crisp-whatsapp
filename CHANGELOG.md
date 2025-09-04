@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-crisp-whatsapp` will be documented in this file.
 
+## Optional migration to log whatsapp request for easier troubleshooting - 2025-09-04
+
+- Optional migration to log whatsapp request for easier troubleshooting
+
 ## 1.0.1 - 2025-08-24
 
 ### What's Changed
