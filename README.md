@@ -9,7 +9,7 @@ Send WhatsApp Messages or Notifications with [Crisp](https://crisp.chat/?track=K
 
 ## Support me
 
-You can use my [referral link to sign up for Crisp Chat 1 month free trial. I get a small reward if you upgrade to a paid customer at the Essentials or Plus Plan later.](https://crisp.chat/?track=KszsQ9SFo8)
+You can use my [referral link to sign up for Crisp Chat free trial. I get a small reward if you upgrade to a paid customer at the Essentials or Plus Plan later.](https://crisp.chat/?track=KszsQ9SFo8)
 
 I highly recommend Crisp Chat if you are looking for a chat support SaaS for your website. As it charges a flat 
 monthly fee instead of charging by per seat. It has a very nice UI, powerful bot builder & healthy plugins ecosystem as well.
