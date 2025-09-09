@@ -25,6 +25,8 @@ return new class extends Migration
 
             // if there is a callback and matches the request id earlier. Only used if u use the same app for the
             // webhook callback
+            $table->boolean('callback_response_error')->nullable()->index();
+            $table->string('callback_response_reason')->nullable()->index();
             $table->json('callback_response_data')->nullable();
 
             $table->timestamps();
