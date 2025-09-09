@@ -24,6 +24,7 @@ class CrispWhatsAppMessageLog extends Model
             'status_code' => 'integer',
             'response_data' => 'array',
 
+            'callback_response_error' => 'boolean',
             'callback_response_data' => 'array',
         ];
     }
