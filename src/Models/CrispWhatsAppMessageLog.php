@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Ziming\LaravelCrispWhatsApp\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\MassPrunable;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Prunable;
 use Illuminate\Support\Carbon;
 
 class CrispWhatsAppMessageLog extends Model
 {
-    use Prunable;
+    use MassPrunable;
 
     protected $table = 'crisp_whatsapp_message_logs';
 
