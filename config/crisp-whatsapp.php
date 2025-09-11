@@ -23,5 +23,4 @@ return [
 
     'delete_records_older_than_days' => env('CRISP_WHATSAPP_DELETE_RECORDS_OLDER_THAN_DAYS', 30),
 
-
 ];

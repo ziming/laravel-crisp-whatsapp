@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Ziming\LaravelCrispWhatsApp\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Prunable;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;
 
 class CrispWhatsAppMessageLog extends Model
@@ -37,8 +37,8 @@ class CrispWhatsAppMessageLog extends Model
     public function prunable(): Builder
     {
         return static::where('created_at', '<', Carbon::now()->subDays(
-                config('crisp-whatsapp.delete_records_older_than_days')
-            )
+            config('crisp-whatsapp.delete_records_older_than_days')
+        )
         );
     }
 }
