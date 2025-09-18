@@ -29,6 +29,9 @@ return new class extends Migration
             $table->string('callback_response_reason')->nullable()->index();
             $table->json('callback_response_data')->nullable();
 
+            // For you to mark resolved when you have resolved the error
+            $table->timestamp('resolved_at')->nullable();
+
             $table->timestamps();
         });
     }
