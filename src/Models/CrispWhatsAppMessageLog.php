@@ -31,6 +31,8 @@ class CrispWhatsAppMessageLog extends Model
 
             'callback_response_error' => 'boolean',
             'callback_response_data' => 'array',
+
+            'resolved_at' => 'immutable_datetime',
         ];
     }
 
