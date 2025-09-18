@@ -21,6 +21,6 @@ return [
     // if you want to log whatsapp requests, you will need to publish migration if this is true
     'log_requests' => env('CRISP_WHATSAPP_LOG_REQUESTS', false),
 
-    'delete_records_older_than_days' => env('CRISP_WHATSAPP_DELETE_RECORDS_OLDER_THAN_DAYS', 30),
+    'delete_records_older_than_days' => env('CRISP_WHATSAPP_DELETE_RECORDS_OLDER_THAN_DAYS', 8),
 
 ];
