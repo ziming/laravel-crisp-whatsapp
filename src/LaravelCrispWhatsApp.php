@@ -11,6 +11,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Sleep;
 use Psr\SimpleCache\InvalidArgumentException;
 use Ziming\LaravelCrispWhatsApp\Data\CrispWhatsAppTemplate;
 use Ziming\LaravelCrispWhatsApp\Data\WhatsAppTemplateBodyComponent;
@@ -124,7 +125,7 @@ final class LaravelCrispWhatsApp
         });
 
         if ($messageTemplate === null && $pagingNext !== null) {
-            sleep(1);
+            Sleep::sleep(1);
             $messageTemplate = $this->getMessageTemplateArray($name, $searchLimit, $onlyApproved, $excludeSamples, $pagingNext);
         }
 
