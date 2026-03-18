@@ -2,6 +2,19 @@
 
 All notable changes to `laravel-crisp-whatsapp` will be documented in this file.
 
+## Support Laravel 13 - 2026-03-18
+
+### What's Changed
+
+* Bump ramsey/composer-install from 3 to 4 by @dependabot[bot] in https://github.com/ziming/laravel-crisp-whatsapp/pull/7
+* Add Laravel 13 support by @Copilot in https://github.com/ziming/laravel-crisp-whatsapp/pull/8
+
+### New Contributors
+
+* @Copilot made their first contribution in https://github.com/ziming/laravel-crisp-whatsapp/pull/8
+
+**Full Changelog**: https://github.com/ziming/laravel-crisp-whatsapp/compare/1.1.1...1.2
+
 ## 1st release of 2026 - 2026-01-25
 
 ### What's Changed
